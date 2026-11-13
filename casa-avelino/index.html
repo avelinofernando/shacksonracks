@@ -168,31 +168,31 @@ const CONFIG = {
   whatsapp: "522221244671",          // digits only, with country code
   city: "Hueyotlipan, Tlaxcala, Mexico",
   instagram: "",                     // optional
-  freeShippingFrom: 120,             // USD. Set 0 to turn off free shipping
+  freeShippingFrom: 399,             // USD. Set 0 to turn off free shipping
   minBelts: 12,                      // wholesale minimum for belts
   minOther: 10,                      // wholesale minimum for everything else
   minPremium: 3,                     // wholesale minimum for high-value pieces
   noBuckleDiscount: 3,               // USD off belts sold without buckle (retail)
   noBuckleWholesaleDiscount: 2,      // USD off belts sold without buckle (wholesale)
 };
-// price = retail USD (null = "price on request"). wholesale = USD each. ship = estimated shipping USD. photos = files in img/
+// price = retail USD (null = "price on request"). wholesale = USD each. photos = files in img/
 const PRODUCTS = [
-  {name:"Caramel Napa Leather Belt", cat:"Belts", price:30, wholesale:23, ship:25, photos:["cinto-napa-1","cinto-napa-2","cinto-napa-3"], desc:"Soft caramel napa leather with orange stitching, rivets and a metal buckle."},
-  {name:"Russet Leather Belt", cat:"Belts", price:39, wholesale:29, ship:25, photos:["cinto-rojizo-1","cinto-rojizo-2","cinto-rojizo-3"], desc:"Thick leather in a reddish-brown tone, with silver buckle and rivets. Our most durable belt."},
-  {name:"Soft Dark Brown Belt", cat:"Belts", price:24, wholesale:18, ship:25, photos:["cinto-suave-1","cinto-suave-2","cinto-suave-3"], desc:"Soft dark brown leather, matching stitching, metal eyelets and a silver buckle."},
-  {name:"Brown Belt with Ring", cat:"Belts", price:24, wholesale:18, ship:25, photos:["cinto-cafe-1","cinto-cafe-2","cinto-cafe-3","cinto-cafe-4"], desc:"Brown leather with hand-marked stitching, rivets and a metal ring."},
-  {name:"Natural Leather Belt", cat:"Belts", price:24, wholesale:18, ship:25, photos:["cinto-natural-1","cinto-natural-2","cinto-natural-3"], desc:"Undyed natural leather with ring and rivets. Darkens beautifully with use."},
-  {name:"Double Leather Hip Bag", cat:"Bags & Cases", price:149, wholesale:134, premium:true, ship:32, photos:["rinonera-1","rinonera-2","rinonera-3","rinonera-4"], desc:"Two brown leather pouches on an adjustable belt. Keeps everything within reach."},
-  {name:"Leather Phone Holster", cat:"Bags & Cases", price:25, wholesale:20, ship:25, photos:["funda-1","funda-2","funda-3","funda-4"], desc:"Dark brown leather holster with flap, snap closure and belt loop."},
-  {name:"Round Snap Pouch, Caramel", cat:"Bags & Cases", price:16, wholesale:13, ship:25, photos:["estuche-caramelo-1","estuche-caramelo-2","estuche-caramelo-3","estuche-caramelo-4"], desc:"Leather pouch with double white stitching and a metal snap."},
-  {name:"Round Snap Pouch, Black", cat:"Bags & Cases", price:16, wholesale:13, ship:25, photos:["estuche-negro-1","estuche-negro-2","estuche-negro-3"], desc:"Black leather pouch with double white stitching and a metal snap."},
-  {name:"Black Leather Card Holder", cat:"Bags & Cases", price:16, wholesale:13, ship:25, photos:["tarjetero-1","tarjetero-2","tarjetero-3"], desc:"Slim black leather card holder, hand-stitched, with several slots."},
-  {name:"Pink Suede Coin Purse", cat:"Hides & Suede", price:8, wholesale:6, ship:25, photos:["monedero-rosa-1","monedero-rosa-2"], desc:"Small pink suede coin purse with a matching zipper."},
-  {name:"Red Suede Coin Purse", cat:"Hides & Suede", price:6, wholesale:5, ship:25, photos:["monedero-rojo-1","monedero-rojo-2"], desc:"Small red suede coin purse with a matching zipper."},
-  {name:"Suede Half Chaps (pair)", cat:"Hides & Suede", price:59, wholesale:53, premium:true, ship:32, photos:["polainas-1","polainas-2","polainas-3","polainas-4"], desc:"Pair of gray suede half chaps with hook-and-loop closure, worn over boots."},
-  {name:"Sheepskin", cat:"Hides & Suede", price:89, wholesale:80, premium:true, unit:"each", ship:45, photos:["piel-1","piel-2","piel-3","piel-4","piel-5"], desc:"Tanned sheepskin, soft and warm. Every hide is one of a kind."},
-  {name:"Blue Braided Riding Crop", cat:"Braided Leather", price:69, wholesale:62, premium:true, ship:25, photos:["fusta-azul-1","fusta-azul-2","fusta-azul-3","fusta-azul-4"], desc:"Black leather with hand-braided blue edging and fringe."},
-  {name:"Green & White Braided Piece", cat:"Braided Leather", price:159, wholesale:143, premium:true, ship:32, photos:["trenzado-verde-1","trenzado-verde-2","trenzado-verde-3"], desc:"Green and white braiding over black leather, with long fringe."},
+  {name:"Caramel Napa Leather Belt", cat:"Belts", price:30, wholesale:23, photos:["cinto-napa-1","cinto-napa-2","cinto-napa-3"], desc:"Soft caramel napa leather with orange stitching, rivets and a metal buckle."},
+  {name:"Russet Leather Belt", cat:"Belts", price:39, wholesale:29, photos:["cinto-rojizo-1","cinto-rojizo-2","cinto-rojizo-3"], desc:"Thick leather in a reddish-brown tone, with silver buckle and rivets. Our most durable belt."},
+  {name:"Soft Dark Brown Belt", cat:"Belts", price:24, wholesale:18, photos:["cinto-suave-1","cinto-suave-2","cinto-suave-3"], desc:"Soft dark brown leather, matching stitching, metal eyelets and a silver buckle."},
+  {name:"Brown Belt with Ring", cat:"Belts", price:24, wholesale:18, photos:["cinto-cafe-1","cinto-cafe-2","cinto-cafe-3","cinto-cafe-4"], desc:"Brown leather with hand-marked stitching, rivets and a metal ring."},
+  {name:"Natural Leather Belt", cat:"Belts", price:24, wholesale:18, photos:["cinto-natural-1","cinto-natural-2","cinto-natural-3"], desc:"Undyed natural leather with ring and rivets. Darkens beautifully with use."},
+  {name:"Double Leather Hip Bag", cat:"Bags & Cases", price:149, wholesale:134, premium:true, photos:["rinonera-1","rinonera-2","rinonera-3","rinonera-4"], desc:"Two brown leather pouches on an adjustable belt. Keeps everything within reach."},
+  {name:"Leather Phone Holster", cat:"Bags & Cases", price:25, wholesale:20, photos:["funda-1","funda-2","funda-3","funda-4"], desc:"Dark brown leather holster with flap, snap closure and belt loop."},
+  {name:"Round Snap Pouch, Caramel", cat:"Bags & Cases", price:16, wholesale:13, photos:["estuche-caramelo-1","estuche-caramelo-2","estuche-caramelo-3","estuche-caramelo-4"], desc:"Leather pouch with double white stitching and a metal snap."},
+  {name:"Round Snap Pouch, Black", cat:"Bags & Cases", price:16, wholesale:13, photos:["estuche-negro-1","estuche-negro-2","estuche-negro-3"], desc:"Black leather pouch with double white stitching and a metal snap."},
+  {name:"Black Leather Card Holder", cat:"Bags & Cases", price:16, wholesale:13, photos:["tarjetero-1","tarjetero-2","tarjetero-3"], desc:"Slim black leather card holder, hand-stitched, with several slots."},
+  {name:"Pink Suede Coin Purse", cat:"Hides & Suede", price:8, wholesale:6, photos:["monedero-rosa-1","monedero-rosa-2"], desc:"Small pink suede coin purse with a matching zipper."},
+  {name:"Red Suede Coin Purse", cat:"Hides & Suede", price:6, wholesale:5, photos:["monedero-rojo-1","monedero-rojo-2"], desc:"Small red suede coin purse with a matching zipper."},
+  {name:"Suede Half Chaps (pair)", cat:"Hides & Suede", price:59, wholesale:53, premium:true, photos:["polainas-1","polainas-2","polainas-3","polainas-4"], desc:"Pair of gray suede half chaps with hook-and-loop closure, worn over boots."},
+  {name:"Sheepskin", cat:"Hides & Suede", price:89, wholesale:80, premium:true, unit:"each", photos:["piel-1","piel-2","piel-3","piel-4","piel-5"], desc:"Tanned sheepskin, soft and warm. Every hide is one of a kind."},
+  {name:"Blue Braided Riding Crop", cat:"Braided Leather", price:69, wholesale:62, premium:true, photos:["fusta-azul-1","fusta-azul-2","fusta-azul-3","fusta-azul-4"], desc:"Black leather with hand-braided blue edging and fringe."},
+  {name:"Green & White Braided Piece", cat:"Braided Leather", price:159, wholesale:143, premium:true, photos:["trenzado-verde-1","trenzado-verde-2","trenzado-verde-3"], desc:"Green and white braiding over black leather, with long fringe."},
 ];
 /* ========================= */
 
@@ -203,7 +203,7 @@ $("#waTop").href=waLink("Hi, I saw the Casa Avelino catalog and would like more 
 const contact=[CONFIG.city, CONFIG.whatsapp?("WhatsApp +"+CONFIG.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})$/,"$1 $2 $3 $4")):"", CONFIG.instagram].filter(Boolean).join("  ·  ");
 $("#contactLine").innerHTML=CONFIG.whatsapp?`<a href="${waLink("Hi, I'd like more information.")}">${contact}</a>`:contact;
 $("#contactoPrint").textContent=contact;
-$("#shipInfo").innerHTML=`Shipping to the U.S. is extra (estimate shown on each item).`+(CONFIG.freeShippingFrom?` <b>Free shipping on orders of $${CONFIG.freeShippingFrom}+.</b>`:"");
+$("#shipInfo").innerHTML=`Shipping to the U.S. is quoted separately with your order.`+(CONFIG.freeShippingFrom?` <b>Free shipping on orders of $${CONFIG.freeShippingFrom}+.</b>`:"");
 
 const minOf=p=>p.premium?CONFIG.minPremium:(p.cat=="Belts"?CONFIG.minBelts:CONFIG.minOther);
 $("#mayoSub").textContent=`From ${CONFIG.minBelts} belts, ${CONFIG.minPremium} high-value pieces (hip bag, sheepskins, half chaps and braided pieces) or ${CONFIG.minOther} pieces of any other item. Models can be mixed within the same group.`;
@@ -220,8 +220,7 @@ function card(p){
   <div class="row">${priceTxt}
   <a href="${waLink("Hi, I'm interested in: "+p.name+(p.price!=null?" ($"+p.price+" USD)":""))}">${p.price==null?"Ask":"Order"}</a></div>
   ${p.cat=="Belts"&&p.price!=null?`<span class="altprice">Without buckle: $${p.price-CONFIG.noBuckleDiscount} USD<a href="${waLink("Hi, I'm interested in: "+p.name+" without buckle ($"+(p.price-CONFIG.noBuckleDiscount)+" USD)")}">Order</a></span>`:""}
-  ${p.wholesale?`<span class="mayonote">Wholesale: $${p.wholesale} each${p.cat=="Belts"?` ($${p.wholesale-CONFIG.noBuckleWholesaleDiscount} without buckle)`:""} from ${minOf(p)} pcs</span>`:""}
-  <span class="shipnote">Shipping extra, approx. $${p.ship} USD</span></div>`;
+  ${p.wholesale?`<span class="mayonote">Wholesale: $${p.wholesale} each${p.cat=="Belts"?` ($${p.wholesale-CONFIG.noBuckleWholesaleDiscount} without buckle)`:""} from ${minOf(p)} pcs</span>`:""}</div>`;
   el.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{
     el.querySelector(".ph img").src=`img/${b.dataset.f}.jpg`;
     el.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-current",x===b));
