@@ -140,11 +140,34 @@ footer a{color:var(--oro)}
 .pd-info dd{margin:0;color:var(--tinta)}
 .pd-note{font-size:13px;color:#8a7765;margin-top:14px}
 
+/* order form */
+.of{position:fixed;inset:0;z-index:40;background:rgba(42,26,16,.6);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:24px 12px}
+.of.on{display:flex}
+.of-box{background:var(--crema);border-radius:16px;max-width:520px;width:100%;padding:22px 20px 20px;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.of-x{position:absolute;right:10px;top:8px;border:0;background:transparent;font-size:28px;line-height:1;color:var(--cuero);cursor:pointer;padding:6px}
+.of h2{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--cuero);padding-right:30px}
+.of .of-sub{color:var(--suave);font-size:14px;margin:2px 0 14px}
+.of label{display:block;font-size:13px;font-weight:600;color:var(--cuero);margin-top:10px}
+.of label span{font-weight:400;color:#8a7765}
+.of [hidden]{display:none!important}
+.of input,.of textarea{width:100%;margin-top:4px;font:16px var(--sans);padding:10px 12px;border:1px solid #cdb999;border-radius:10px;background:#fff;color:var(--tinta)}
+.of input:focus,.of textarea:focus{outline:2px solid var(--caramelo);border-color:var(--caramelo)}
+.of textarea{min-height:70px;resize:vertical}
+.of .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.of .send{width:100%;margin-top:16px;font-size:16px;padding:13px;background:var(--caramelo)}
+.of .send:disabled{opacity:.6;cursor:wait}
+.of .msg{margin-top:12px;font-size:14px;padding:10px 12px;border-radius:10px;display:none}
+.of .msg.ok{display:block;background:#e7f2e3;color:#24502a}
+.of .msg.err{display:block;background:#f8e3df;color:#7a2a1d}
+.of .msg a{color:inherit;font-weight:600}
+.of .hp{position:absolute;left:-9999px}
+.of .done{text-align:center;padding:20px 0 6px}
+.of .done b{display:block;font-family:var(--serif);font-size:28px;color:var(--cuero)}
 .cover,.print-only{display:none}
 @page{size:Letter;margin:14mm}
 @media print{
   body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  header.top,.filters,.row .btns,.intro,.pd,.car-btn,.car-dots,.car-count,.badge,.altprice a,.mayo .cta{display:none!important}
+  header.top,.filters,.row .btns,.intro,.pd,.of,.car-btn,.car-dots,.car-count,.badge,.altprice a,.mayo .cta{display:none!important}
   .cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240mm;background:var(--cuero);color:var(--crema);text-align:center;page-break-after:always;padding:20mm}
   .cover img{width:300px}
   .cover h2{font-family:var(--serif);font-weight:500;font-size:34px;margin-top:20px}
@@ -253,10 +276,41 @@ footer a{color:var(--oro)}
   </div>
 </div>
 
+<!-- order form -->
+<div class="of" id="of" role="dialog" aria-modal="true" aria-labelledby="ofTitle">
+  <div class="of-box">
+    <button class="of-x" id="ofClose" aria-label="Close">&times;</button>
+    <div id="ofFormWrap">
+      <h2 id="ofTitle">Place an order</h2>
+      <p class="of-sub" id="ofSub"></p>
+      <form id="ofForm" novalidate>
+        <input type="hidden" name="_subject" id="ofSubject">
+        <label class="hp">Leave empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+        <label>Product or request<textarea name="request" id="ofRequest" required></textarea></label>
+        <div class="two">
+          <label>Quantity<input name="quantity" id="ofQty" inputmode="numeric" value="1"></label>
+          <label>Color <span>(optional)</span><input name="color" placeholder="e.g. black"></label>
+        </div>
+        <label id="ofSizeWrap">Size <span>(waist / belt size)</span><input name="size" placeholder="e.g. 34"></label>
+        <div class="two">
+          <label>Your name<input name="name" autocomplete="name" required></label>
+          <label>Phone <span>(optional)</span><input name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+        <label>Your email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Shipping address <span>(city, state, ZIP)</span><textarea name="address" autocomplete="street-address" style="min-height:56px"></textarea></label>
+        <label>Notes <span>(optional)</span><textarea name="notes" style="min-height:56px"></textarea></label>
+        <button class="btn send" type="submit" id="ofSend">Send order</button>
+        <div class="msg" id="ofMsg" role="status"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ====== EDIT HERE ====== */
 const CONFIG = {
   email: "automacreative@gmail.com", // orders and quotes go to this address
+  formspreeId: "",                   // Formspree form ID (the part after formspree.io/f/). Empty = buttons open an email instead
   city: "Hueyotlipan, Tlaxcala, Mexico",
   instagram: "",                     // optional
   freeShippingFrom: 399,             // USD. Set 0 to turn off free shipping
@@ -460,6 +514,52 @@ viewer.addEventListener("touchmove",e=>{ if(viewer.classList.contains("zoom")){e
 let sx=null;
 viewer.addEventListener("touchstart",e=>{ moved=false; if(!viewer.classList.contains("zoom")) sx=e.touches[0].clientX; else sx=null; },{passive:true});
 viewer.addEventListener("touchend",e=>{ if(sx==null) return; const dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>45){moved=true;show(idx+(dx<0?1:-1));} },{passive:true});
+/* order form (Formspree). Every order/quote button is a mailto: link; when a Formspree ID
+   is set, the click opens this form instead and the mailto stays as a fallback. */
+const of=$("#of"), ofForm=$("#ofForm"), ofMsg=$("#ofMsg");
+let ofReturn=null;
+function openForm(href){
+  const q=new URLSearchParams(href.split("?")[1]||"");
+  const subject=(q.get("subject")||"Casa Avelino - Inquiry");
+  const first=(q.get("body")||"").split("\n")[0];
+  const kind=subject.replace(/^Casa Avelino - /,"");
+  const isOrder=/^Order:/.test(kind);
+  $("#ofTitle").textContent=isOrder?"Place an order":(/Wholesale/.test(kind)?"Wholesale quote":(/Custom/.test(kind)?"Custom piece quote":"Contact us"));
+  $("#ofSub").textContent=isOrder?"Send us your order and we will reply by email with the total and shipping.":"Tell us what you need and we will reply by email.";
+  $("#ofSubject").value=subject;
+  $("#ofRequest").value=first.replace(/^Hi, /,"").replace(/^I'm interested in: /,"").replace(/\. Color \/ size \/ details: $/,"");
+  $("#ofSizeWrap").hidden=!/Belt|Custom/i.test(kind);
+  $("#ofSend").textContent=isOrder?"Send order":"Send request";
+  ofMsg.className="msg"; ofMsg.textContent="";
+  $("#ofFormWrap").querySelector(".done")?.remove(); ofForm.hidden=false;
+  ofForm.dataset.mailto=href;
+  ofReturn=document.activeElement;
+  of.classList.add("on"); document.body.classList.add("locked");
+  setTimeout(()=>ofForm.querySelector(isOrder?'[name="name"]':'#ofRequest').focus(),50);
+}
+function closeForm(){ of.classList.remove("on"); if(!cur) document.body.classList.remove("locked"); ofReturn?.focus?.(); }
+document.addEventListener("click",e=>{
+  const a=e.target.closest('a[href^="mailto:"]'); if(!a||!CONFIG.formspreeId) return;
+  e.preventDefault(); openForm(a.getAttribute("href"));
+});
+$("#ofClose").onclick=closeForm;
+of.addEventListener("click",e=>{ if(e.target===of) closeForm(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&of.classList.contains("on")){e.stopImmediatePropagation();closeForm();} },true);
+ofForm.addEventListener("submit",async e=>{
+  e.preventDefault();
+  const bad=[...ofForm.querySelectorAll("[required]")].find(i=>!i.value.trim()||(i.type==="email"&&!/^\S+@\S+\.\S+$/.test(i.value)));
+  if(bad){ofMsg.className="msg err";ofMsg.textContent=bad.type==="email"?"Please enter a valid email so we can reply.":"Please fill in "+bad.closest("label").childNodes[0].textContent.trim().toLowerCase()+".";bad.focus();return;}
+  const btn=$("#ofSend"); btn.disabled=true; const label=btn.textContent; btn.textContent="Sending...";
+  try{
+    const r=await fetch(`https://formspree.io/f/${CONFIG.formspreeId}`,{method:"POST",body:new FormData(ofForm),headers:{Accept:"application/json"}});
+    if(!r.ok) throw new Error(r.status);
+    ofForm.reset(); ofForm.hidden=true;
+    $("#ofFormWrap").insertAdjacentHTML("beforeend",`<div class="done"><b>Thank you!</b><p>We received your request and will reply to your email soon.</p><button class="btn" style="margin-top:14px" onclick="closeForm()">Close</button></div>`);
+  }catch(err){
+    ofMsg.className="msg err";
+    ofMsg.innerHTML=`We could not send the form. Please try again, or <a href="${ofForm.dataset.mailto}">email us directly</a>.`;
+  }finally{ btn.disabled=false; btn.textContent=label; }
+});
 route();
 </script>
 </body>
