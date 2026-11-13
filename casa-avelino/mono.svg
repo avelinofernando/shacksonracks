@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 112" role="img" aria-label="Casa Avelino">
+  <path d="M4 108 V50 A46 46 0 0 1 96 50 V108 Z" fill="#3b2415" stroke="#d9a066" stroke-width="2"/>
+  <path d="M11 101 V51 A39 39 0 0 1 89 51 V101 Z" fill="none" stroke="#e9d3b0" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
+  <text x="50" y="80" text-anchor="middle" font-family="'Cormorant Garamond','Playfair Display',Georgia,'Liberation Serif',serif" font-size="38" font-weight="700" fill="#e9d3b0" letter-spacing="1">CA</text>
+</svg>

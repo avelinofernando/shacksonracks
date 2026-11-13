@@ -7,7 +7,7 @@
 <meta name="description" content="Handmade leather belts, cases, braided pieces and sheepskins from a family workshop in Hueyotlipan, Tlaxcala, Mexico. 32 years of craft.">
 <meta property="og:title" content="Casa Avelino | Handmade Leather Goods from Mexico">
 <meta property="og:description" content="Handmade leather belts, cases, braided pieces and sheepskins. 32 years of craft.">
-<link rel="icon" href="logo-en.svg" type="image/svg+xml">
+<link rel="icon" href="mono.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -22,17 +22,17 @@ body{font-family:var(--sans);background:var(--crema);color:var(--tinta);line-hei
 img{display:block;max-width:100%}
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
 header.top{background:var(--cuero);color:var(--crema);position:sticky;top:0;z-index:5}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-header.top .brand{font-family:var(--serif);font-weight:700;font-size:24px;letter-spacing:3px;text-decoration:none;color:var(--crema)}
-header.top a.wa{background:var(--caramelo);color:#fff;text-decoration:none;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600}
-.hero{background:var(--cuero);color:var(--crema);text-align:center;padding:36px 16px 48px}
-.hero img{width:min(240px,62vw);margin:0 auto 12px}
-.hero h1{font-family:var(--serif);font-size:clamp(28px,6vw,46px);font-weight:500;max-width:620px;margin:0 auto 10px;line-height:1.15}
-.hero p{max-width:520px;margin:0 auto;color:#e9d3b0}
-.hero .pdf{display:inline-block;margin-top:16px;color:var(--oro);font-size:14px}
-.ship{background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:12px 16px;margin-top:24px;font-size:14px;color:#5e4a3a;text-align:center}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+header.top .brand{display:flex;align-items:center;text-decoration:none}
+header.top .brand img{height:38px;width:auto}
+header.top a.wa{background:var(--caramelo);color:#fff;text-decoration:none;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600}
+.intro{padding:18px 0 4px;text-align:center}
+.intro h1{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4.4vw,30px);color:var(--cuero);line-height:1.2}
+.intro p{font-size:14px;color:#5e4a3a;margin-top:4px}
+.intro a{color:var(--caramelo)}
+.ship{background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:10px 16px;margin-top:14px;font-size:14px;color:#5e4a3a;text-align:center}
 .ship b{color:var(--cuero)}
-.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:22px 0 20px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0 18px}
 .filters button{font:500 14px var(--sans);border:1px solid var(--cuero2);background:transparent;color:var(--cuero);padding:8px 16px;border-radius:999px;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--cuero);color:var(--crema)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;padding-bottom:40px}
@@ -82,7 +82,7 @@ footer a{color:var(--oro)}
 @page{size:Letter;margin:14mm}
 @media print{
   body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  header.top,.filters,.thumbs,.row a,.hero,.mini{display:none!important}
+  header.top,.filters,.thumbs,.row a,.intro,.mini{display:none!important}
   .cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240mm;background:var(--cuero);color:var(--crema);text-align:center;page-break-after:always;padding:20mm}
   .cover img{width:300px}
   .cover h2{font-family:var(--serif);font-weight:500;font-size:34px;margin-top:20px}
@@ -103,7 +103,7 @@ footer a{color:var(--oro)}
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="brand" href="#">CASA AVELINO</a>
+  <a class="brand" href="#" aria-label="Casa Avelino, home"><img src="mono.svg" alt="Casa Avelino"></a>
   <a class="wa" id="waTop" href="#contact">Order on WhatsApp</a>
 </div></header>
 
@@ -114,12 +114,10 @@ footer a{color:var(--oro)}
   <p>LEATHER &amp; SHEEPSKIN &middot; HANDMADE &middot; 32 YEARS OF CRAFT</p>
 </section>
 
-<section class="hero">
-  <img src="logo-en.svg" alt="Casa Avelino, handmade leather goods from Mexico">
-  <h1>Leather and sheepskin, handcrafted one piece at a time</h1>
-  <p>32 years of craft in every belt, case and braid, made in our family workshop in Hueyotlipan, Tlaxcala, Mexico.</p>
-  <a class="pdf" href="Casa-Avelino-Catalog.pdf" download>Download the PDF catalog</a>
-</section>
+<section class="intro"><div class="wrap">
+  <h1>Casa Avelino &middot; Handmade Leather Goods</h1>
+  <p>32 years of craft from our family workshop in Hueyotlipan, Tlaxcala, Mexico. <a href="Casa-Avelino-Catalog.pdf" download>Download the PDF catalog</a></p>
+</div></section>
 
 <main class="wrap">
   <div class="ship" id="shipInfo"></div>
@@ -205,7 +203,7 @@ $("#waTop").href=waLink("Hi, I saw the Casa Avelino catalog and would like more 
 const contact=[CONFIG.city, CONFIG.whatsapp?("WhatsApp +"+CONFIG.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})$/,"$1 $2 $3 $4")):"", CONFIG.instagram].filter(Boolean).join("  ·  ");
 $("#contactLine").innerHTML=CONFIG.whatsapp?`<a href="${waLink("Hi, I'd like more information.")}">${contact}</a>`:contact;
 $("#contactoPrint").textContent=contact;
-$("#shipInfo").innerHTML=`<b>Shipping to the U.S. is charged separately.</b> It is quoted by weight and destination; each item shows an estimate.`+(CONFIG.freeShippingFrom?` <b>Free shipping on orders of $${CONFIG.freeShippingFrom} USD or more.</b>`:"");
+$("#shipInfo").innerHTML=`Shipping to the U.S. is extra (estimate shown on each item).`+(CONFIG.freeShippingFrom?` <b>Free shipping on orders of $${CONFIG.freeShippingFrom}+.</b>`:"");
 
 const minOf=p=>p.premium?CONFIG.minPremium:(p.cat=="Belts"?CONFIG.minBelts:CONFIG.minOther);
 $("#mayoSub").textContent=`From ${CONFIG.minBelts} belts, ${CONFIG.minPremium} high-value pieces (hip bag, sheepskins, half chaps and braided pieces) or ${CONFIG.minOther} pieces of any other item. Models can be mixed within the same group.`;
