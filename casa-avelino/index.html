@@ -62,6 +62,8 @@ header.top a.wa{background:var(--caramelo);color:#fff;text-decoration:none;paddi
 .mayo td b{color:var(--caramelo)}
 .mayo .cta{display:block;width:max-content;margin:20px auto 0;background:var(--caramelo);color:#fff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:999px}
 .mayo .nota{font-size:12px;color:#8a7765;text-align:center;margin-top:10px}
+.altprice{font-size:13px;color:var(--cuero);font-weight:600}
+.altprice a{color:var(--caramelo);margin-left:6px}
 .mayonote{font-size:12px;color:var(--caramelo);font-weight:600}
 .about{background:var(--cuero);color:var(--crema);padding:48px 0}
 .about .wrap{display:grid;gap:24px;grid-template-columns:1fr;align-items:center}
@@ -93,6 +95,7 @@ footer a{color:var(--oro)}
   .info h3{font-size:18px}.info p{font-size:11px}.price{font-size:22px}
   .mayo{page-break-before:always;padding:6mm 0}.mayo .cta{display:none}
   .about{page-break-before:always;padding:10mm 0;margin-top:8mm}
+  .altprice a{display:none}
   .print-only{display:block}
   footer{margin-top:8mm}
 }
@@ -171,6 +174,8 @@ const CONFIG = {
   minBelts: 12,                      // wholesale minimum for belts
   minOther: 10,                      // wholesale minimum for everything else
   minPremium: 3,                     // wholesale minimum for high-value pieces
+  noBuckleDiscount: 3,               // USD off belts sold without buckle (retail)
+  noBuckleWholesaleDiscount: 2,      // USD off belts sold without buckle (wholesale)
 };
 // price = retail USD (null = "price on request"). wholesale = USD each. ship = estimated shipping USD. photos = files in img/
 const PRODUCTS = [
@@ -204,8 +209,8 @@ $("#shipInfo").innerHTML=`<b>Shipping to the U.S. is charged separately.</b> It 
 
 const minOf=p=>p.premium?CONFIG.minPremium:(p.cat=="Belts"?CONFIG.minBelts:CONFIG.minOther);
 $("#mayoSub").textContent=`From ${CONFIG.minBelts} belts, ${CONFIG.minPremium} high-value pieces (hip bag, sheepskins, half chaps and braided pieces) or ${CONFIG.minOther} pieces of any other item. Models can be mixed within the same group.`;
-$("#mayoTable").innerHTML=`<tr><th>Product</th><th class="n">Minimum</th><th class="n">Retail</th><th class="n">Wholesale (each)</th><th class="n">Savings</th></tr>`+
-  PRODUCTS.filter(p=>p.wholesale).map(p=>`<tr><td>${p.name}</td><td class="n">${minOf(p)} pcs</td><td class="n">$${p.price}</td><td class="n"><b>$${p.wholesale}</b></td><td class="n">${Math.round((1-p.wholesale/p.price)*100)}%</td></tr>`).join("");
+$("#mayoTable").innerHTML=`<tr><th>Product</th><th class="n">Minimum</th><th class="n">Retail</th><th class="n">Wholesale (each)</th><th class="n">Without buckle</th><th class="n">Savings</th></tr>`+
+  PRODUCTS.filter(p=>p.wholesale).map(p=>`<tr><td>${p.name}</td><td class="n">${minOf(p)} pcs</td><td class="n">$${p.price}</td><td class="n"><b>$${p.wholesale}</b></td><td class="n">${p.cat=="Belts"?"$"+(p.wholesale-CONFIG.noBuckleWholesaleDiscount):"&mdash;"}</td><td class="n">${Math.round((1-p.wholesale/p.price)*100)}%</td></tr>`).join("");
 $("#mayoCta").href=waLink("Hi, I'd like a wholesale quote from Casa Avelino.");
 
 function card(p){
@@ -216,7 +221,8 @@ function card(p){
   <div class="info"><h3>${p.name}</h3><p>${p.desc}</p>
   <div class="row">${priceTxt}
   <a href="${waLink("Hi, I'm interested in: "+p.name+(p.price!=null?" ($"+p.price+" USD)":""))}">${p.price==null?"Ask":"Order"}</a></div>
-  ${p.wholesale?`<span class="mayonote">Wholesale: $${p.wholesale} each from ${minOf(p)} pcs</span>`:""}
+  ${p.cat=="Belts"&&p.price!=null?`<span class="altprice">Without buckle: $${p.price-CONFIG.noBuckleDiscount} USD<a href="${waLink("Hi, I'm interested in: "+p.name+" without buckle ($"+(p.price-CONFIG.noBuckleDiscount)+" USD)")}">Order</a></span>`:""}
+  ${p.wholesale?`<span class="mayonote">Wholesale: $${p.wholesale} each${p.cat=="Belts"?` ($${p.wholesale-CONFIG.noBuckleWholesaleDiscount} without buckle)`:""} from ${minOf(p)} pcs</span>`:""}
   <span class="shipnote">Shipping extra, approx. $${p.ship} USD</span></div>`;
   el.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{
     el.querySelector(".ph img").src=`img/${b.dataset.f}.jpg`;
