@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Avelino | Cuero y piel hecho a mano</title>
+<meta name="description" content="Cinturones, estuches, trenzados y pieles hechos a mano en cuero. Casa Avelino, 32 años de oficio.">
+<meta property="og:title" content="Casa Avelino | Cuero y piel hecho a mano">
+<meta property="og:description" content="Cinturones, estuches, trenzados y pieles hechos a mano. 32 años de oficio.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cuero:#3b2415; --cuero2:#5a3820; --caramelo:#b5651d; --oro:#d9a066;
+  --crema:#f6efe3; --papel:#fffaf1; --tinta:#2a1a10; --linea:#e4d6bf;
+  --serif:'Cormorant Garamond','Playfair Display',Georgia,'Liberation Serif',serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--sans);background:var(--crema);color:var(--tinta);line-height:1.5}
+img{display:block;max-width:100%}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header.top{background:var(--cuero);color:var(--crema);position:sticky;top:0;z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+header.top .brand{font-family:var(--serif);font-weight:700;font-size:24px;letter-spacing:3px;text-decoration:none;color:var(--crema)}
+header.top a.wa{background:var(--caramelo);color:#fff;text-decoration:none;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600}
+.hero{background:var(--cuero);color:var(--crema);text-align:center;padding:36px 16px 48px}
+.hero img{width:min(240px,62vw);margin:0 auto 12px}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,6vw,46px);font-weight:500;max-width:620px;margin:0 auto 10px;line-height:1.15}
+.hero p{max-width:520px;margin:0 auto;color:#e9d3b0}
+.hero .pdf{display:inline-block;margin-top:16px;color:var(--oro);font-size:14px}
+.ship{background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:12px 16px;margin-top:24px;font-size:14px;color:#5e4a3a;text-align:center}
+.ship b{color:var(--cuero)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:22px 0 20px}
+.filters button{font:500 14px var(--sans);border:1px solid var(--cuero2);background:transparent;color:var(--cuero);padding:8px 16px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--cuero);color:var(--crema)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;padding-bottom:40px}
+.card{background:var(--papel);border:1px solid var(--linea);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ph{aspect-ratio:4/5;background:var(--cuero2);position:relative}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumbs{display:flex;gap:6px;padding:8px 8px 0}
+.thumbs button{width:44px;height:44px;padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:none}
+.thumbs button[aria-current="true"]{border-color:var(--caramelo)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.info{padding:12px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.info h3{font-family:var(--serif);font-size:24px;line-height:1.1;color:var(--cuero)}
+.info p{font-size:14px;color:#5e4a3a;flex:1}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.price{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--caramelo)}
+.price small{font:400 12px var(--sans);color:#8a7765}
+.price.tbd{font:600 14px var(--sans);color:#8a7765}
+.row a{background:var(--cuero);color:var(--crema);text-decoration:none;font-size:13px;font-weight:600;padding:8px 12px;border-radius:999px}
+.shipnote{font-size:12px;color:#8a7765}
+.mayo{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:44px 0}
+.mayo h2{font-family:var(--serif);font-size:36px;font-weight:500;color:var(--cuero);text-align:center}
+.mayo .sub{text-align:center;color:#5e4a3a;max-width:600px;margin:6px auto 20px}
+.mayo table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--linea)}
+.mayo th,.mayo td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--linea)}
+.mayo th{background:var(--cuero);color:var(--crema);font-weight:600}
+.mayo .n{text-align:right;white-space:nowrap}
+.mayo td b{color:var(--caramelo)}
+.mayo .cta{display:block;width:max-content;margin:20px auto 0;background:var(--caramelo);color:#fff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:999px}
+.mayo .nota{font-size:12px;color:#8a7765;text-align:center;margin-top:10px}
+.mayonote{font-size:12px;color:var(--caramelo);font-weight:600}
+.about{background:var(--cuero);color:var(--crema);padding:48px 0}
+.about .wrap{display:grid;gap:24px;grid-template-columns:1fr;align-items:center}
+@media(min-width:760px){.about .wrap{grid-template-columns:1fr 1fr}}
+.about img.main{border-radius:14px;max-height:460px;width:100%;object-fit:cover}
+.about h2{font-family:var(--serif);font-size:36px;font-weight:500;margin-bottom:10px}
+.about p{color:#e9d3b0;margin-bottom:10px}
+.about .years{font-family:var(--serif);font-size:56px;font-weight:700;color:var(--oro);line-height:1}
+.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.mini img{border-radius:8px;aspect-ratio:1/1;object-fit:cover;width:100%}
+footer{background:#2a1a10;color:#c9b79c;text-align:center;padding:28px 16px;font-size:14px}
+footer b{color:var(--crema);font-family:var(--serif);font-size:22px;letter-spacing:3px}
+footer a{color:var(--oro)}
+.cover,.print-only{display:none}
+
+@page{size:Letter;margin:14mm}
+@media print{
+  body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  header.top,.filters,.thumbs,.row a,.hero,.mini{display:none!important}
+  .cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240mm;background:var(--cuero);color:var(--crema);text-align:center;page-break-after:always;padding:20mm}
+  .cover img{width:300px}
+  .cover h2{font-family:var(--serif);font-weight:500;font-size:34px;margin-top:20px}
+  .cover p{color:var(--oro);margin-top:6px;letter-spacing:2px;font-size:13px}
+  .ship{margin:0 0 6mm}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;padding:0}
+  .card{break-inside:avoid;page-break-inside:avoid}
+  .card[hidden]{display:flex!important}
+  .ph{aspect-ratio:4/3}
+  .info h3{font-size:18px}.info p{font-size:11px}.price{font-size:22px}
+  .mayo{page-break-before:always;padding:6mm 0}.mayo .cta{display:none}
+  .about{page-break-before:always;padding:10mm 0;margin-top:8mm}
+  .print-only{display:block}
+  footer{margin-top:8mm}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#">CASA AVELINO</a>
+  <a class="wa" id="waTop" href="#contacto">Pedir por WhatsApp</a>
+</div></header>
+
+<section class="cover">
+  <img src="logo.svg" alt="Casa Avelino">
+  <h2>Catálogo 2026</h2>
+  <p>CUERO Y PIEL &middot; HECHO A MANO &middot; 32 AÑOS DE OFICIO</p>
+</section>
+
+<section class="hero">
+  <img src="logo.svg" alt="Casa Avelino, cuero y piel hecho a mano">
+  <h1>Cuero y piel trabajados a mano, uno por uno</h1>
+  <p>32 años de oficio en cada cinturón, estuche y trenzado. Hechos en nuestro taller familiar.</p>
+  <a class="pdf" href="Casa-Avelino-Catalogo.pdf" download>Descargar catálogo en PDF</a>
+</section>
+
+<main class="wrap">
+  <div class="ship" id="shipInfo"></div>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="mayo" id="mayoreo">
+  <div class="wrap">
+    <h2>Precios por mayoreo</h2>
+    <p class="sub" id="mayoSub"></p>
+    <table id="mayoTable"></table>
+    <a class="cta" id="mayoCta" href="#contacto">Pedir cotización de mayoreo</a>
+    <p class="nota">Envío aparte en pedidos de mayoreo. Se cotiza según peso y destino.</p>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="wrap">
+    <div>
+      <img class="main" src="img/taller-1.jpg" alt="Don Roberto trabajando en su taller" loading="lazy">
+      <div class="mini">
+        <img src="img/taller-2.jpg" alt="Máquina de coser del taller" loading="lazy">
+        <img src="img/taller-3.jpg" alt="Cinturones terminados" loading="lazy">
+        <img src="img/taller-4.jpg" alt="Materiales del taller" loading="lazy">
+        <img src="img/taller-5.jpg" alt="Mesa de trabajo" loading="lazy">
+      </div>
+    </div>
+    <div>
+      <div class="years">32 años</div>
+      <h2>Nuestro taller</h2>
+      <p>Don Roberto Avelino lleva 32 años trabajando el cuero y la piel a mano. Cada pieza se corta, cose y arma en el taller de la familia, con materiales seleccionados.</p>
+      <p>Aquí no hay producción en serie: cada cinturón, estuche o trenzado sale de las manos de quien conoce el oficio de toda la vida.</p>
+      <p class="print-only" id="contactoPrint"></p>
+    </div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <b>CASA AVELINO</b>
+  <p id="contactLine"></p>
+  <p style="margin-top:6px;font-size:12px">Precios en dólares (USD). Envío por separado.</p>
+</footer>
+
+<script>
+/* ====== EDITA AQUÍ ====== */
+const CONFIG = {
+  whatsapp: "522221244671",   // solo números, con código de país
+  ciudad: "",                 // ej: "Puebla, México"
+  instagram: "",              // opcional
+  envioGratisDesde: 120,
+  minCinturones: 12,          // piezas mínimas de mayoreo en cinturones
+  minOtros: 10,               // piezas mínimas de mayoreo en el resto
+  minPremium: 3,              // piezas mínimas en las piezas de mayor valor      // USD. Pon 0 para no ofrecer envío gratis
+};
+// price = USD (null = "por confirmar"). ship = envío estimado USD. photos = archivos dentro de img/
+const PRODUCTS = [
+  {name:"Cinturón Napa Caramelo", cat:"Cinturones", price:35, mayoreo:26, ship:25, photos:["cinto-napa-1","cinto-napa-2","cinto-napa-3"], desc:"Cuero napa suave color caramelo, costura naranja, remaches y hebilla metálica."},
+  {name:"Cinturón Cuero Rojizo", cat:"Cinturones", price:44, mayoreo:32, ship:25, photos:["cinto-rojizo-1","cinto-rojizo-2","cinto-rojizo-3"], desc:"Cuero grueso en tono café rojizo, hebilla plateada y remaches. El más resistente."},
+  {name:"Cinturón Café Oscuro Suave", cat:"Cinturones", price:29, mayoreo:22, ship:25, photos:["cinto-suave-1","cinto-suave-2","cinto-suave-3"], desc:"Cuero suave café oscuro, costura a tono, ojales metálicos y hebilla plateada."},
+  {name:"Cinturón Café con Argolla", cat:"Cinturones", price:29, mayoreo:22, ship:25, photos:["cinto-cafe-1","cinto-cafe-2","cinto-cafe-3","cinto-cafe-4"], desc:"Cuero café con costura marcada a mano, remaches y argolla metálica."},
+  {name:"Cinturón Cuero Natural", cat:"Cinturones", price:null, ship:25, photos:["cinto-natural-1","cinto-natural-2","cinto-natural-3"], desc:"Cuero natural sin teñir, con argolla y remaches. Se oscurece con el uso."},
+  {name:"Riñonera Doble de Cuero", cat:"Bolsas y estuches", price:149, mayoreo:134, premium:true, ship:32, photos:["rinonera-1","rinonera-2","rinonera-3","rinonera-4"], desc:"Dos bolsas de cuero café sobre un cinturón ajustable. Para llevar todo a mano."},
+  {name:"Funda para Celular", cat:"Bolsas y estuches", price:25, mayoreo:20, ship:25, photos:["funda-1","funda-2","funda-3","funda-4"], desc:"Funda de cuero café oscuro con solapa y broche, con pasador para el cinturón."},
+  {name:"Estuche Redondo Caramelo", cat:"Bolsas y estuches", price:16, mayoreo:13, ship:25, photos:["estuche-caramelo-1","estuche-caramelo-2","estuche-caramelo-3","estuche-caramelo-4"], desc:"Estuche de cuero con doble costura blanca y broche metálico."},
+  {name:"Estuche Redondo Negro", cat:"Bolsas y estuches", price:16, mayoreo:13, ship:25, photos:["estuche-negro-1","estuche-negro-2","estuche-negro-3"], desc:"Estuche de cuero negro con doble costura blanca y broche metálico."},
+  {name:"Tarjetero de Cuero Negro", cat:"Bolsas y estuches", price:null, ship:25, photos:["tarjetero-1","tarjetero-2","tarjetero-3"], desc:"Tarjetero delgado de cuero negro con costura a mano y varias ranuras."},
+  {name:"Monedero de Gamuza Rosa", cat:"Pieles y gamuza", price:8, mayoreo:6, ship:25, photos:["monedero-rosa-1","monedero-rosa-2"], desc:"Monedero pequeño de gamuza rosa con cierre a tono."},
+  {name:"Monedero de Gamuza Rojo", cat:"Pieles y gamuza", price:6, mayoreo:5, ship:25, photos:["monedero-rojo-1","monedero-rojo-2"], desc:"Monedero pequeño de gamuza roja con cierre a tono."},
+  {name:"Polainas de Gamuza (par)", cat:"Pieles y gamuza", price:59, mayoreo:53, premium:true, ship:32, photos:["polainas-1","polainas-2","polainas-3","polainas-4"], desc:"Par de polainas de gamuza gris con cierre de velcro, para usar sobre la bota."},
+  {name:"Piel de Borrego", cat:"Pieles y gamuza", price:89, mayoreo:80, premium:true, unit:"cada una", ship:45, photos:["piel-1","piel-2","piel-3","piel-4","piel-5"], desc:"Piel de borrego curtida, suave y abrigadora. Cada pieza es única."},
+  {name:"Fusta Trenzada Azul", cat:"Trenzados", price:69, mayoreo:62, premium:true, ship:25, photos:["fusta-azul-1","fusta-azul-2","fusta-azul-3","fusta-azul-4"], desc:"Cuero negro con trenzado azul hecho a mano y flecos."},
+  {name:"Pieza Trenzada Verde y Blanca", cat:"Trenzados", price:159, mayoreo:143, premium:true, ship:32, photos:["trenzado-verde-1","trenzado-verde-2","trenzado-verde-3"], desc:"Trabajo de trenzado en verde y blanco sobre cuero negro, con flecos largos."},
+];
+/* ========================= */
+
+const $=s=>document.querySelector(s);
+const cats=["Todos",...new Set(PRODUCTS.map(p=>p.cat))];
+const waLink=(txt)=>CONFIG.whatsapp?`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(txt)}`:"#contacto";
+$("#waTop").href=waLink("Hola, vi su catálogo de Casa Avelino y quiero más información.");
+const contact=[CONFIG.ciudad, CONFIG.whatsapp?("WhatsApp +"+CONFIG.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})$/,"$1 $2 $3 $4")):"", CONFIG.instagram].filter(Boolean).join("  ·  ");
+$("#contactLine").innerHTML=CONFIG.whatsapp?`<a href="${waLink("Hola, quiero más información")}">${contact}</a>`:contact;
+$("#contactoPrint").textContent=contact;
+$("#shipInfo").innerHTML=`<b>Envío a Estados Unidos por separado.</b> Se cotiza según peso y destino; cada pieza muestra un costo aproximado.`+(CONFIG.envioGratisDesde?` <b>Envío gratis en pedidos desde $${CONFIG.envioGratisDesde} USD.</b>`:"");
+
+const minOf=p=>p.premium?CONFIG.minPremium:(p.cat=="Cinturones"?CONFIG.minCinturones:CONFIG.minOtros);
+$("#mayoSub").textContent=`Desde ${CONFIG.minCinturones} cinturones, ${CONFIG.minPremium} piezas de las de mayor valor (riñonera, pieles, polainas y trenzados) o ${CONFIG.minOtros} piezas de cualquier otro producto. Puedes mezclar modelos dentro del mismo grupo.`;
+$("#mayoTable").innerHTML=`<tr><th>Producto</th><th class="n">Mínimo</th><th class="n">Menudeo</th><th class="n">Mayoreo c/u</th><th class="n">Ahorro</th></tr>`+
+  PRODUCTS.filter(p=>p.mayoreo).map(p=>`<tr><td>${p.name}</td><td class="n">${minOf(p)} pzas</td><td class="n">$${p.price}</td><td class="n"><b>$${p.mayoreo}</b></td><td class="n">${Math.round((1-p.mayoreo/p.price)*100)}%</td></tr>`).join("");
+$("#mayoCta").href=waLink("Hola, quiero una cotización de mayoreo de Casa Avelino.");
+
+function card(p){
+  const el=document.createElement("article"); el.className="card"; el.dataset.cat=p.cat;
+  const priceTxt=p.price==null?`<span class="price tbd">Precio por confirmar</span>`:`<span class="price">$${p.price}<small> USD${p.unit?" "+p.unit:""}</small></span>`;
+  el.innerHTML=`<div class="ph"><img src="img/${p.photos[0]}.jpg" alt="${p.name}" loading="lazy"></div>
+  ${p.photos.length>1?`<div class="thumbs">${p.photos.map((f,i)=>`<button aria-current="${i==0}" data-f="${f}" aria-label="Foto ${i+1}"><img src="img/${f}.jpg" alt="" loading="lazy"></button>`).join("")}</div>`:""}
+  <div class="info"><h3>${p.name}</h3><p>${p.desc}</p>
+  <div class="row">${priceTxt}
+  <a href="${waLink("Hola, me interesa: "+p.name+(p.price!=null?" ($"+p.price+" USD)":""))}">${p.price==null?"Consultar":"Pedir"}</a></div>
+  ${p.mayoreo?`<span class="mayonote">Mayoreo: $${p.mayoreo} c/u desde ${minOf(p)} pzas</span>`:""}
+  <span class="shipnote">Envío aparte, aprox. $${p.ship} USD</span></div>`;
+  el.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{
+    el.querySelector(".ph img").src=`img/${b.dataset.f}.jpg`;
+    el.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-current",x===b));
+  });
+  return el;
+}
+const grid=$("#grid"); PRODUCTS.forEach(p=>grid.append(card(p)));
+const fl=$("#filters");
+cats.forEach((c,i)=>{const b=document.createElement("button");b.textContent=c;b.setAttribute("aria-pressed",i==0);
+  b.onclick=()=>{fl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    grid.querySelectorAll(".card").forEach(k=>k.hidden=!(c=="Todos"||k.dataset.cat==c));};
+  fl.append(b);});
+</script>
+</body>
+</html>
