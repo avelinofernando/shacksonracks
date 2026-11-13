@@ -4,85 +4,147 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Casa Avelino | Handmade Leather Goods from Mexico</title>
-<meta name="description" content="Handmade leather belts, cases, braided pieces and sheepskins from a family workshop in Hueyotlipan, Tlaxcala, Mexico. 32 years of craft.">
+<meta name="description" content="Handmade leather belts, cases, braided pieces and sheepskins from a family workshop in Hueyotlipan, Tlaxcala, Mexico. 32 years of craft. Custom colors and made-to-order pieces.">
 <meta property="og:title" content="Casa Avelino | Handmade Leather Goods from Mexico">
 <meta property="og:description" content="Handmade leather belts, cases, braided pieces and sheepskins. 32 years of craft.">
 <link rel="icon" href="mono.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --cuero:#3b2415; --cuero2:#5a3820; --caramelo:#b5651d; --oro:#d9a066;
-  --crema:#f6efe3; --papel:#fffaf1; --tinta:#2a1a10; --linea:#e4d6bf;
+  --crema:#f6efe3; --papel:#fffaf1; --tinta:#2a1a10; --linea:#e4d6bf; --suave:#5e4a3a;
   --serif:'Cormorant Garamond','Playfair Display',Georgia,'Liberation Serif',serif;
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
 }
 *{box-sizing:border-box;margin:0}
 body{font-family:var(--sans);background:var(--crema);color:var(--tinta);line-height:1.5}
+body.locked{overflow:hidden}
 img{display:block;max-width:100%}
+button{font-family:inherit}
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+
+/* top bar */
 header.top{background:var(--cuero);color:var(--crema);position:sticky;top:0;z-index:5}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
 header.top .brand{display:flex;align-items:center;text-decoration:none}
 header.top .brand img{height:38px;width:auto}
-header.top a.wa{background:var(--caramelo);color:#fff;text-decoration:none;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600}
+a.wa{background:var(--caramelo);color:#fff;text-decoration:none;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap}
+
+/* intro */
 .intro{padding:18px 0 4px;text-align:center}
 .intro h1{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4.4vw,30px);color:var(--cuero);line-height:1.2}
-.intro p{font-size:14px;color:#5e4a3a;margin-top:4px}
+.intro p{font-size:14px;color:var(--suave);margin-top:4px}
 .intro a{color:var(--caramelo)}
-.ship{background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:10px 16px;margin-top:14px;font-size:14px;color:#5e4a3a;text-align:center}
+.ship{background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:10px 16px;margin-top:14px;font-size:14px;color:var(--suave);text-align:center}
 .ship b{color:var(--cuero)}
+.ship a{color:var(--caramelo);font-weight:600}
+.ship .sep{display:block;margin-top:4px}
 .filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0 18px}
 .filters button{font:500 14px var(--sans);border:1px solid var(--cuero2);background:transparent;color:var(--cuero);padding:8px 16px;border-radius:999px;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--cuero);color:var(--crema)}
+
+/* product grid */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;padding-bottom:40px}
 .card{background:var(--papel);border:1px solid var(--linea);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-.ph{aspect-ratio:4/5;background:var(--cuero2);position:relative}
-.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.thumbs{display:flex;gap:6px;padding:8px 8px 0}
-.thumbs button{width:44px;height:44px;padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:none}
-.thumbs button[aria-current="true"]{border-color:var(--caramelo)}
-.thumbs img{width:100%;height:100%;object-fit:cover}
+.card .open{color:inherit;text-decoration:none;display:block}
+.card .open:focus-visible{outline:3px solid var(--caramelo);outline-offset:-3px}
+.ph{aspect-ratio:4/5;background:var(--cuero2);position:relative;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.card .open:hover .ph img{transform:scale(1.03)}
+.badge{position:absolute;right:10px;bottom:10px;background:rgba(42,26,16,.78);color:#fff;font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px}
 .info{padding:12px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .info h3{font-family:var(--serif);font-size:24px;line-height:1.1;color:var(--cuero)}
-.info p{font-size:14px;color:#5e4a3a;flex:1}
-.row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.info p{font-size:14px;color:var(--suave);flex:1}
+.custom{font-size:12px;color:var(--suave)}
+.custom::before{content:"\25CF  ";color:var(--caramelo)}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;gap:8px}
 .price{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--caramelo)}
 .price small{font:400 12px var(--sans);color:#8a7765}
-.price.tbd{font:600 14px var(--sans);color:#8a7765}
-.row a{background:var(--cuero);color:var(--crema);text-decoration:none;font-size:13px;font-weight:600;padding:8px 12px;border-radius:999px}
-.shipnote{font-size:12px;color:#8a7765}
+.row .btns{display:flex;gap:6px}
+.btn{background:var(--cuero);color:var(--crema);text-decoration:none;font-size:13px;font-weight:600;padding:8px 12px;border-radius:999px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--cuero);border:1px solid var(--cuero2)}
+.altprice{font-size:13px;color:var(--cuero);font-weight:600}
+.altprice a{color:var(--caramelo);margin-left:6px}
+.mayonote{font-size:12px;color:var(--caramelo);font-weight:600}
+
+/* wholesale */
 .mayo{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:44px 0}
-.mayo h2{font-family:var(--serif);font-size:36px;font-weight:500;color:var(--cuero);text-align:center}
-.mayo .sub{text-align:center;color:#5e4a3a;max-width:600px;margin:6px auto 20px}
-.mayo table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--linea)}
+.mayo h2,.taller h2{font-family:var(--serif);font-size:36px;font-weight:500;text-align:center}
+.mayo h2{color:var(--cuero)}
+.mayo .sub{text-align:center;color:var(--suave);max-width:640px;margin:6px auto 20px}
+.tablewrap{overflow-x:auto}
+.mayo table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--linea);min-width:560px}
 .mayo th,.mayo td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--linea)}
 .mayo th{background:var(--cuero);color:var(--crema);font-weight:600}
 .mayo .n{text-align:right;white-space:nowrap}
 .mayo td b{color:var(--caramelo)}
 .mayo .cta{display:block;width:max-content;margin:20px auto 0;background:var(--caramelo);color:#fff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:999px}
 .mayo .nota{font-size:12px;color:#8a7765;text-align:center;margin-top:10px}
-.altprice{font-size:13px;color:var(--cuero);font-weight:600}
-.altprice a{color:var(--caramelo);margin-left:6px}
-.mayonote{font-size:12px;color:var(--caramelo);font-weight:600}
-.about{background:var(--cuero);color:var(--crema);padding:48px 0}
-.about .wrap{display:grid;gap:24px;grid-template-columns:1fr;align-items:center}
-@media(min-width:760px){.about .wrap{grid-template-columns:1fr 1fr}}
-.about img.main{border-radius:14px;max-height:460px;width:100%;object-fit:cover}
-.about h2{font-family:var(--serif);font-size:36px;font-weight:500;margin-bottom:10px}
-.about p{color:#e9d3b0;margin-bottom:10px}
-.about .years{font-family:var(--serif);font-size:56px;font-weight:700;color:var(--oro);line-height:1}
-.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
-.mini img{border-radius:8px;aspect-ratio:1/1;object-fit:cover;width:100%}
+
+/* workshop gallery */
+.taller{background:var(--cuero);color:var(--crema);padding:48px 0 40px}
+.taller .years{font-family:var(--serif);font-size:48px;font-weight:700;color:var(--oro);line-height:1;text-align:center}
+.taller .lead{max-width:680px;margin:10px auto 24px;color:#e9d3b0;text-align:center}
+.car{position:relative}
+.car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:12px;border-radius:14px;scrollbar-width:none}
+.car-track::-webkit-scrollbar{display:none}
+.car-track figure{flex:0 0 100%;scroll-snap-align:center;margin:0;position:relative}
+.car-track img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;background:#2a1a10}
+@media(max-width:700px){.car-track img{aspect-ratio:4/5}}
+.car-track figcaption{position:absolute;left:12px;bottom:12px;background:rgba(42,26,16,.78);color:#f6efe3;font-size:13px;padding:5px 11px;border-radius:999px}
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(246,239,227,.92);color:var(--cuero);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.car-btn:disabled{opacity:.35;cursor:default}
+.car-btn[hidden]{display:none}
+.car-btn.prev{left:10px}.car-btn.next{right:10px}
+.car-count{text-align:center;margin-top:12px;color:#e9d3b0;font-size:14px}
+.car-dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.car-dots button{width:8px;height:8px;border-radius:50%;border:0;background:#7a5a40;padding:0;cursor:pointer}
+.car-dots button[aria-current="true"]{background:var(--oro)}
 footer{background:#2a1a10;color:#c9b79c;text-align:center;padding:28px 16px;font-size:14px}
 footer b{color:var(--crema);font-family:var(--serif);font-size:22px;letter-spacing:3px}
 footer a{color:var(--oro)}
-.cover,.print-only{display:none}
 
+/* product detail */
+.pd{position:fixed;inset:0;z-index:20;background:var(--crema);overflow-y:auto;display:none}
+.pd.on{display:block}
+.pd-bar{position:sticky;top:0;z-index:2;background:var(--cuero);height:52px}
+.pd-bar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+.pd-back:focus:not(:focus-visible){outline:none}
+.pd-back{background:transparent;border:0;color:var(--crema);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;padding:6px 0}
+.pd-body{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding:20px 16px 48px;max-width:1100px;margin:0 auto}
+@media(min-width:880px){.pd-body{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;padding-top:28px}}
+.viewer{position:relative;background:#fff;border:1px solid var(--linea);border-radius:14px;overflow:hidden;aspect-ratio:4/5;cursor:zoom-in;touch-action:pan-y}
+.viewer.zoom{cursor:zoom-out;touch-action:none}
+.viewer img{width:100%;height:100%;object-fit:contain;transition:transform .25s;user-select:none;-webkit-user-drag:none}
+.viewer.zoom img{transform:scale(2.4)}
+.viewer .car-btn{z-index:1}
+.v-count{position:absolute;left:12px;top:12px;background:rgba(42,26,16,.78);color:#fff;font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px}
+.v-hint{position:absolute;right:12px;top:12px;background:rgba(42,26,16,.78);color:#fff;font-size:12px;padding:4px 9px;border-radius:999px}
+.v-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:4px}
+.v-thumbs button{flex:0 0 64px;height:64px;padding:0;border:2px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer;background:none}
+.v-thumbs button[aria-current="true"]{border-color:var(--caramelo)}
+.v-thumbs img{width:100%;height:100%;object-fit:cover}
+.pd-info .cat{font-size:13px;color:#8a7765;text-transform:uppercase;letter-spacing:1px}
+.pd-info h2{font-family:var(--serif);font-size:clamp(30px,5vw,40px);line-height:1.1;color:var(--cuero);margin-top:4px}
+.pd-info .price{font-size:38px;display:block;margin-top:8px}
+.pd-info .lead{color:var(--suave);margin-top:10px}
+.pd-buy{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.pd-buy .btn{display:block;text-align:center;font-size:15px;padding:12px 16px}
+.pd-box{margin-top:14px;background:var(--papel);border:1px solid var(--linea);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--suave)}
+.pd-box b{color:var(--cuero)}
+.pd-box a{color:var(--caramelo);font-weight:600}
+.pd-info dl{margin-top:18px;border-top:1px solid var(--linea)}
+.pd-info dl div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px;padding:9px 0;border-bottom:1px solid var(--linea);font-size:14px}
+.pd-info dt{color:#8a7765}
+.pd-info dd{margin:0;color:var(--tinta)}
+.pd-note{font-size:13px;color:#8a7765;margin-top:14px}
+
+.cover,.print-only{display:none}
 @page{size:Letter;margin:14mm}
 @media print{
   body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  header.top,.filters,.thumbs,.row a,.intro,.mini{display:none!important}
+  header.top,.filters,.row .btns,.intro,.pd,.car-btn,.car-dots,.car-count,.badge,.altprice a,.mayo .cta{display:none!important}
   .cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240mm;background:var(--cuero);color:var(--crema);text-align:center;page-break-after:always;padding:20mm}
   .cover img{width:300px}
   .cover h2{font-family:var(--serif);font-weight:500;font-size:34px;margin-top:20px}
@@ -93,11 +155,14 @@ footer a{color:var(--oro)}
   .card[hidden]{display:flex!important}
   .ph{aspect-ratio:4/3}
   .info h3{font-size:18px}.info p{font-size:11px}.price{font-size:22px}
-  .mayo{page-break-before:always;padding:6mm 0}.mayo .cta{display:none}
-  .about{page-break-before:always;padding:10mm 0;margin-top:8mm}
-  .altprice a{display:none}
+  .mayo{page-break-before:always;padding:6mm 0}
+  .mayo table{font-size:11px;min-width:0}.mayo th,.mayo td{padding:5px 8px}.mayo .sub{margin-bottom:10px}
+  .taller{page-break-before:always;padding:10mm 0}
+  .car-track{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;overflow:visible}
+  .car-track figure:nth-child(n+7){display:none}
+  .car-track img{aspect-ratio:1/1}
+  .car-track figcaption{display:none}
   .print-only{display:block}
-  footer{margin-top:8mm}
 }
 </style>
 </head>
@@ -129,38 +194,64 @@ footer a{color:var(--oro)}
   <div class="wrap">
     <h2>Wholesale Pricing</h2>
     <p class="sub" id="mayoSub"></p>
-    <table id="mayoTable"></table>
+    <div class="tablewrap"><table id="mayoTable"></table></div>
     <a class="cta" id="mayoCta" href="#contact">Request a wholesale quote</a>
     <p class="nota">Wholesale shipping is quoted separately by weight and destination.</p>
   </div>
 </section>
 
-<section class="about" id="about">
+<section class="taller" id="workshop">
   <div class="wrap">
-    <div>
-      <img class="main" src="img/taller-1.jpg" alt="Don Roberto at work in the workshop" loading="lazy">
-      <div class="mini">
-        <img src="img/taller-2.jpg" alt="Workshop sewing machine" loading="lazy">
-        <img src="img/taller-3.jpg" alt="Finished belts" loading="lazy">
-        <img src="img/taller-4.jpg" alt="Workshop materials" loading="lazy">
-        <img src="img/taller-5.jpg" alt="Workbench" loading="lazy">
-      </div>
+    <div class="years">32 years</div>
+    <h2>Our Workshop</h2>
+    <p class="lead">Don Roberto Avelino has spent 32 years working leather and sheepskin by hand in Hueyotlipan, Tlaxcala, Mexico. Every piece is cut, stitched and assembled in the family workshop. There is no mass production here: each one comes from hands that have practiced this craft for a lifetime.</p>
+    <div class="car" id="gal">
+      <div class="car-track" id="galTrack" tabindex="0" aria-label="Workshop photos"></div>
+      <button class="car-btn prev" id="galPrev" aria-label="Previous photo">&#8249;</button>
+      <button class="car-btn next" id="galNext" aria-label="Next photo">&#8250;</button>
     </div>
-    <div>
-      <div class="years">32 years</div>
-      <h2>Our Workshop</h2>
-      <p>Don Roberto Avelino has spent 32 years working leather and sheepskin by hand in Hueyotlipan, Tlaxcala, Mexico. Every piece is cut, stitched and assembled in the family workshop, using carefully selected materials.</p>
-      <p>There is no mass production here: every belt, case and braid comes from hands that have practiced this craft for a lifetime.</p>
-      <p class="print-only" id="contactoPrint"></p>
-    </div>
+    <div class="car-count" id="galCount"></div>
+    <div class="car-dots" id="galDots"></div>
+    <p class="print-only" id="contactoPrint" style="text-align:center;margin-top:10px;color:#e9d3b0"></p>
   </div>
 </section>
 
 <footer id="contact">
   <b>CASA AVELINO</b>
   <p id="contactLine"></p>
-  <p style="margin-top:6px;font-size:12px">Prices in U.S. dollars (USD). Shipping charged separately.</p>
+  <p style="margin-top:6px;font-size:12px">Prices in U.S. dollars (USD). Shipping charged separately. Colors are customizable; custom pieces quoted on request.</p>
 </footer>
+
+<!-- product detail view -->
+<div class="pd" id="pd" role="dialog" aria-modal="true" aria-labelledby="pdName">
+  <div class="pd-bar"><div class="wrap">
+    <button class="pd-back" id="pdBack">&#8592; All products</button>
+    <a class="wa" id="pdWaTop" href="#">Order on WhatsApp</a>
+  </div></div>
+  <div class="pd-body">
+    <div>
+      <div class="viewer" id="viewer">
+        <img id="vImg" alt="">
+        <span class="v-count" id="vCount"></span>
+        <span class="v-hint" id="vHint">Tap to zoom</span>
+        <button class="car-btn prev" id="vPrev" aria-label="Previous photo">&#8249;</button>
+        <button class="car-btn next" id="vNext" aria-label="Next photo">&#8250;</button>
+      </div>
+      <div class="v-thumbs" id="vThumbs"></div>
+    </div>
+    <div class="pd-info">
+      <div class="cat" id="pdCat"></div>
+      <h2 id="pdName"></h2>
+      <div id="pdPrice"></div>
+      <p class="lead" id="pdDesc"></p>
+      <div class="pd-buy" id="pdBuy"></div>
+      <div class="pd-box" id="pdCustom"></div>
+      <div class="pd-box" id="pdWh"></div>
+      <dl id="pdDetails"></dl>
+      <p class="pd-note" id="pdNote"></p>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ====== EDIT HERE ====== */
@@ -175,56 +266,101 @@ const CONFIG = {
   noBuckleDiscount: 3,               // USD off belts sold without buckle (retail)
   noBuckleWholesaleDiscount: 2,      // USD off belts sold without buckle (wholesale)
 };
-// price = retail USD (null = "price on request"). wholesale = USD each. photos = files in img/
+// id = link name. price = retail USD (null = "price on request"). wholesale = USD each.
+// photos = files in img/ (larger copies in img/hd/). details = shown on the product page.
 const PRODUCTS = [
-  {name:"Caramel Napa Leather Belt", cat:"Belts", price:30, wholesale:23, photos:["cinto-napa-1","cinto-napa-2","cinto-napa-3"], desc:"Soft caramel napa leather with orange stitching, rivets and a metal buckle."},
-  {name:"Russet Leather Belt", cat:"Belts", price:39, wholesale:29, photos:["cinto-rojizo-1","cinto-rojizo-2","cinto-rojizo-3"], desc:"Thick leather in a reddish-brown tone, with silver buckle and rivets. Our most durable belt."},
-  {name:"Soft Dark Brown Belt", cat:"Belts", price:24, wholesale:18, photos:["cinto-suave-1","cinto-suave-2","cinto-suave-3"], desc:"Soft dark brown leather, matching stitching, metal eyelets and a silver buckle."},
-  {name:"Brown Belt with Ring", cat:"Belts", price:24, wholesale:18, photos:["cinto-cafe-1","cinto-cafe-2","cinto-cafe-3","cinto-cafe-4"], desc:"Brown leather with hand-marked stitching, rivets and a metal ring."},
-  {name:"Natural Leather Belt", cat:"Belts", price:24, wholesale:18, photos:["cinto-natural-1","cinto-natural-2","cinto-natural-3"], desc:"Undyed natural leather with ring and rivets. Darkens beautifully with use."},
-  {name:"Double Leather Hip Bag", cat:"Bags & Cases", price:149, wholesale:134, premium:true, photos:["rinonera-1","rinonera-2","rinonera-3","rinonera-4"], desc:"Two brown leather pouches on an adjustable belt. Keeps everything within reach."},
-  {name:"Leather Phone Holster", cat:"Bags & Cases", price:25, wholesale:20, photos:["funda-1","funda-2","funda-3","funda-4"], desc:"Dark brown leather holster with flap, snap closure and belt loop."},
-  {name:"Round Snap Pouch, Caramel", cat:"Bags & Cases", price:16, wholesale:13, photos:["estuche-caramelo-1","estuche-caramelo-2","estuche-caramelo-3","estuche-caramelo-4"], desc:"Leather pouch with double white stitching and a metal snap."},
-  {name:"Round Snap Pouch, Black", cat:"Bags & Cases", price:16, wholesale:13, photos:["estuche-negro-1","estuche-negro-2","estuche-negro-3"], desc:"Black leather pouch with double white stitching and a metal snap."},
-  {name:"Black Leather Card Holder", cat:"Bags & Cases", price:16, wholesale:13, photos:["tarjetero-1","tarjetero-2","tarjetero-3"], desc:"Slim black leather card holder, hand-stitched, with several slots."},
-  {name:"Pink Suede Coin Purse", cat:"Hides & Suede", price:8, wholesale:6, photos:["monedero-rosa-1","monedero-rosa-2"], desc:"Small pink suede coin purse with a matching zipper."},
-  {name:"Red Suede Coin Purse", cat:"Hides & Suede", price:6, wholesale:5, photos:["monedero-rojo-1","monedero-rojo-2"], desc:"Small red suede coin purse with a matching zipper."},
-  {name:"Suede Half Chaps (pair)", cat:"Hides & Suede", price:59, wholesale:53, premium:true, photos:["polainas-1","polainas-2","polainas-3","polainas-4"], desc:"Pair of gray suede half chaps with hook-and-loop closure, worn over boots."},
-  {name:"Sheepskin", cat:"Hides & Suede", price:89, wholesale:80, premium:true, unit:"each", photos:["piel-1","piel-2","piel-3","piel-4","piel-5"], desc:"Tanned sheepskin, soft and warm. Every hide is one of a kind."},
-  {name:"Blue Braided Riding Crop", cat:"Braided Leather", price:69, wholesale:62, premium:true, photos:["fusta-azul-1","fusta-azul-2","fusta-azul-3","fusta-azul-4"], desc:"Black leather with hand-braided blue edging and fringe."},
-  {name:"Green & White Braided Piece", cat:"Braided Leather", price:159, wholesale:143, premium:true, photos:["trenzado-verde-1","trenzado-verde-2","trenzado-verde-3"], desc:"Green and white braiding over black leather, with long fringe."},
+  {id:"caramel-napa-belt", name:"Caramel Napa Leather Belt", cat:"Belts", price:30, wholesale:23, photos:["cinto-napa-1","cinto-napa-2","cinto-napa-3"],
+   desc:"Soft caramel napa leather with orange stitching, rivets and a metal buckle.",
+   details:{Material:"Napa leather",Color:"Caramel",Stitching:"Orange, along both edges",Hardware:"Metal buckle and rivets"}},
+  {id:"russet-belt", name:"Russet Leather Belt", cat:"Belts", price:39, wholesale:29, photos:["cinto-rojizo-1","cinto-rojizo-2","cinto-rojizo-3"],
+   desc:"Thick leather in a reddish-brown tone, with silver buckle and rivets. Our most durable belt.",
+   details:{Material:"Thick leather",Color:"Reddish brown",Hardware:"Silver buckle and rivets"}},
+  {id:"soft-dark-brown-belt", name:"Soft Dark Brown Belt", cat:"Belts", price:24, wholesale:18, photos:["cinto-suave-1","cinto-suave-2","cinto-suave-3"],
+   desc:"Soft dark brown leather, matching stitching, metal eyelets and a silver buckle.",
+   details:{Material:"Soft leather",Color:"Dark brown",Stitching:"Matching color",Hardware:"Silver buckle and metal eyelets"}},
+  {id:"brown-ring-belt", name:"Brown Belt with Ring", cat:"Belts", price:24, wholesale:18, photos:["cinto-cafe-1","cinto-cafe-2","cinto-cafe-3","cinto-cafe-4"],
+   desc:"Brown leather with hand-marked stitching, rivets and a metal ring.",
+   details:{Material:"Leather",Color:"Brown",Stitching:"Hand-marked",Hardware:"Buckle, metal ring and rivets"}},
+  {id:"natural-leather-belt", name:"Natural Leather Belt", cat:"Belts", price:24, wholesale:18, photos:["cinto-natural-1","cinto-natural-2","cinto-natural-3"],
+   desc:"Undyed natural leather with ring and rivets. Darkens beautifully with use.",
+   details:{Material:"Undyed natural leather",Color:"Natural (darkens with use)",Hardware:"Buckle, metal ring and rivets"}},
+  {id:"double-hip-bag", name:"Double Leather Hip Bag", cat:"Bags & Cases", price:149, wholesale:134, premium:true, photos:["rinonera-1","rinonera-2","rinonera-3","rinonera-4"],
+   desc:"Two brown leather pouches on an adjustable belt. Keeps everything within reach.",
+   details:{Material:"Leather",Color:"Dark brown",Design:"Two flap pouches on one belt",Closure:"Flap with button",Belt:"Adjustable, with buckle"}},
+  {id:"phone-holster", name:"Leather Phone Holster", cat:"Bags & Cases", price:25, wholesale:20, photos:["funda-1","funda-2","funda-3","funda-4"],
+   desc:"Dark brown leather holster with flap, snap closure and belt loop.",
+   details:{Material:"Leather",Color:"Dark brown",Closure:"Flap with metal snap",Carry:"Belt loop on the back"}},
+  {id:"round-pouch-caramel", name:"Round Snap Pouch, Caramel", cat:"Bags & Cases", price:16, wholesale:13, photos:["estuche-caramelo-1","estuche-caramelo-2","estuche-caramelo-3","estuche-caramelo-4"],
+   desc:"Leather pouch with double white stitching and a metal snap.",
+   details:{Material:"Leather",Color:"Caramel",Stitching:"Double white stitching",Closure:"Metal snap"}},
+  {id:"round-pouch-black", name:"Round Snap Pouch, Black", cat:"Bags & Cases", price:16, wholesale:13, photos:["estuche-negro-1","estuche-negro-2","estuche-negro-3"],
+   desc:"Black leather pouch with double white stitching and a metal snap.",
+   details:{Material:"Leather",Color:"Black",Stitching:"Double white stitching",Closure:"Metal snap"}},
+  {id:"card-holder", name:"Black Leather Card Holder", cat:"Bags & Cases", price:16, wholesale:13, photos:["tarjetero-1","tarjetero-2","tarjetero-3"],
+   desc:"Slim black leather card holder, hand-stitched, with several slots.",
+   details:{Material:"Leather",Color:"Black",Stitching:"Hand-stitched, white thread",Design:"Several card slots"}},
+  {id:"pink-coin-purse", name:"Pink Suede Coin Purse", cat:"Hides & Suede", price:8, wholesale:6, photos:["monedero-rosa-1","monedero-rosa-2"],
+   desc:"Small pink suede coin purse with a matching zipper.",
+   details:{Material:"Suede",Color:"Pink",Closure:"Matching zipper"}},
+  {id:"red-coin-purse", name:"Red Suede Coin Purse", cat:"Hides & Suede", price:6, wholesale:5, photos:["monedero-rojo-1","monedero-rojo-2"],
+   desc:"Small red suede coin purse with a matching zipper.",
+   details:{Material:"Suede",Color:"Red",Closure:"Matching zipper"}},
+  {id:"suede-half-chaps", name:"Suede Half Chaps (pair)", cat:"Hides & Suede", price:59, wholesale:53, premium:true, photos:["polainas-1","polainas-2","polainas-3","polainas-4"],
+   desc:"Pair of gray suede half chaps with hook-and-loop closure, worn over boots.",
+   details:{Material:"Suede",Color:"Gray",Closure:"Hook-and-loop",Sold:"As a pair"}},
+  {id:"sheepskin", name:"Sheepskin", cat:"Hides & Suede", price:89, wholesale:80, premium:true, unit:"each", natural:true, photos:["piel-1","piel-2","piel-3","piel-4","piel-5"],
+   desc:"Tanned sheepskin, soft and warm. Every hide is one of a kind.",
+   details:{Material:"Tanned sheepskin with natural wool",Color:"Natural tones; each hide varies",Sold:"Per hide"}},
+  {id:"blue-braided-crop", name:"Blue Braided Riding Crop", cat:"Braided Leather", price:69, wholesale:62, premium:true, photos:["fusta-azul-1","fusta-azul-2","fusta-azul-3","fusta-azul-4"],
+   desc:"Black leather with hand-braided blue edging and fringe.",
+   details:{Material:"Leather",Color:"Black with blue braiding",Finish:"Hand-braided edges and fringe",Hardware:"Metal snap"}},
+  {id:"green-white-braided", name:"Green & White Braided Piece", cat:"Braided Leather", price:159, wholesale:143, premium:true, photos:["trenzado-verde-1","trenzado-verde-2","trenzado-verde-3"],
+   desc:"Green and white braiding over black leather, with long fringe.",
+   details:{Material:"Leather",Color:"Black with green and white braiding",Finish:"Hand-braided details and long fringe"}},
+];
+const WORKSHOP = [
+  ["taller-1","Don Roberto at the workbench"],["taller-2","The sewing machine"],["taller-3","Finished belts"],
+  ["taller-4","Shelves of hides and materials"],["taller-5","Cutting table"],["taller-6","Leather straps ready to work"],
+  ["taller-7","Inside the workshop"],["taller-8","Tools and supplies"],["taller-9","Work in progress"],["taller-10","Hand tools"],
 ];
 /* ========================= */
 
 const $=s=>document.querySelector(s);
 const cats=["All",...new Set(PRODUCTS.map(p=>p.cat))];
 const waLink=(txt)=>CONFIG.whatsapp?`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(txt)}`:"#contact";
+const isBelt=p=>p.cat=="Belts";
+const minOf=p=>p.premium?CONFIG.minPremium:(isBelt(p)?CONFIG.minBelts:CONFIG.minOther);
+const orderMsg=(p,noBuckle)=>"Hi, I'm interested in: "+p.name+(noBuckle?" without buckle":"")+(p.price!=null?" ($"+(noBuckle?p.price-CONFIG.noBuckleDiscount:p.price)+" USD)":"");
+const customMsg=p=>"Hi, I'd like a quote for a custom piece"+(p?" based on: "+p.name:"")+". Color / size / details: ";
+const colorTxt=p=>p.natural?"Natural color varies by hide":"Colors are customizable";
+
 $("#waTop").href=waLink("Hi, I saw the Casa Avelino catalog and would like more information.");
 const contact=[CONFIG.city, CONFIG.whatsapp?("WhatsApp +"+CONFIG.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})$/,"$1 $2 $3 $4")):"", CONFIG.instagram].filter(Boolean).join("  ·  ");
 $("#contactLine").innerHTML=CONFIG.whatsapp?`<a href="${waLink("Hi, I'd like more information.")}">${contact}</a>`:contact;
 $("#contactoPrint").textContent=contact;
-$("#shipInfo").innerHTML=`Shipping to the U.S. is quoted separately with your order.`+(CONFIG.freeShippingFrom?` <b>Free shipping on orders of $${CONFIG.freeShippingFrom}+.</b>`:"");
+$("#shipInfo").innerHTML=`Shipping to the U.S. is quoted separately with your order.`+(CONFIG.freeShippingFrom?` <b>Free shipping on orders of $${CONFIG.freeShippingFrom}+.</b>`:"")+
+  `<span class="sep"><b>Colors are customizable.</b> Need a custom size or piece? <a href="${waLink(customMsg(null))}">Message us for a quote</a>.</span>`;
 
-const minOf=p=>p.premium?CONFIG.minPremium:(p.cat=="Belts"?CONFIG.minBelts:CONFIG.minOther);
+/* wholesale table */
 $("#mayoSub").textContent=`From ${CONFIG.minBelts} belts, ${CONFIG.minPremium} high-value pieces (hip bag, sheepskins, half chaps and braided pieces) or ${CONFIG.minOther} pieces of any other item. Models can be mixed within the same group.`;
 $("#mayoTable").innerHTML=`<tr><th>Product</th><th class="n">Minimum</th><th class="n">Retail</th><th class="n">Wholesale (each)</th><th class="n">Without buckle</th><th class="n">Savings</th></tr>`+
-  PRODUCTS.filter(p=>p.wholesale).map(p=>`<tr><td>${p.name}</td><td class="n">${minOf(p)} pcs</td><td class="n">$${p.price}</td><td class="n"><b>$${p.wholesale}</b></td><td class="n">${p.cat=="Belts"?"$"+(p.wholesale-CONFIG.noBuckleWholesaleDiscount):"&mdash;"}</td><td class="n">${Math.round((1-p.wholesale/p.price)*100)}%</td></tr>`).join("");
+  PRODUCTS.filter(p=>p.wholesale).map(p=>`<tr><td>${p.name}</td><td class="n">${minOf(p)} pcs</td><td class="n">$${p.price}</td><td class="n"><b>$${p.wholesale}</b></td><td class="n">${isBelt(p)?"$"+(p.wholesale-CONFIG.noBuckleWholesaleDiscount):"&mdash;"}</td><td class="n">${Math.round((1-p.wholesale/p.price)*100)}%</td></tr>`).join("");
 $("#mayoCta").href=waLink("Hi, I'd like a wholesale quote from Casa Avelino.");
 
+/* product cards */
 function card(p){
   const el=document.createElement("article"); el.className="card"; el.dataset.cat=p.cat;
-  const priceTxt=p.price==null?`<span class="price tbd">Price on request</span>`:`<span class="price">$${p.price}<small> USD${p.unit?" "+p.unit:""}</small></span>`;
-  el.innerHTML=`<div class="ph"><img src="img/${p.photos[0]}.jpg" alt="${p.name}" loading="lazy"></div>
-  ${p.photos.length>1?`<div class="thumbs">${p.photos.map((f,i)=>`<button aria-current="${i==0}" data-f="${f}" aria-label="Photo ${i+1}"><img src="img/${f}.jpg" alt="" loading="lazy"></button>`).join("")}</div>`:""}
-  <div class="info"><h3>${p.name}</h3><p>${p.desc}</p>
+  const priceTxt=p.price==null?`<span class="price" style="font:600 14px var(--sans);color:#8a7765">Price on request</span>`:`<span class="price">$${p.price}<small> USD${p.unit?" "+p.unit:""}</small></span>`;
+  el.innerHTML=`<a class="open" href="#product/${p.id}" aria-label="View details: ${p.name}">
+    <div class="ph"><img src="img/${p.photos[0]}.jpg" alt="${p.name}" loading="lazy">${p.photos.length>1?`<span class="badge">${p.photos.length} photos</span>`:""}</div>
+  </a>
+  <div class="info"><a class="open" href="#product/${p.id}"><h3>${p.name}</h3></a><p>${p.desc}</p>
+  <span class="custom">${colorTxt(p)}</span>
   <div class="row">${priceTxt}
-  <a href="${waLink("Hi, I'm interested in: "+p.name+(p.price!=null?" ($"+p.price+" USD)":""))}">${p.price==null?"Ask":"Order"}</a></div>
-  ${p.cat=="Belts"&&p.price!=null?`<span class="altprice">Without buckle: $${p.price-CONFIG.noBuckleDiscount} USD<a href="${waLink("Hi, I'm interested in: "+p.name+" without buckle ($"+(p.price-CONFIG.noBuckleDiscount)+" USD)")}">Order</a></span>`:""}
-  ${p.wholesale?`<span class="mayonote">Wholesale: $${p.wholesale} each${p.cat=="Belts"?` ($${p.wholesale-CONFIG.noBuckleWholesaleDiscount} without buckle)`:""} from ${minOf(p)} pcs</span>`:""}</div>`;
-  el.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{
-    el.querySelector(".ph img").src=`img/${b.dataset.f}.jpg`;
-    el.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-current",x===b));
-  });
+    <span class="btns"><a class="btn ghost" href="#product/${p.id}">Details</a><a class="btn" href="${waLink(orderMsg(p,false))}">Order</a></span></div>
+  ${isBelt(p)&&p.price!=null?`<span class="altprice">Without buckle: $${p.price-CONFIG.noBuckleDiscount} USD<a href="${waLink(orderMsg(p,true))}">Order</a></span>`:""}
+  ${p.wholesale?`<span class="mayonote">Wholesale: $${p.wholesale} each${isBelt(p)?` ($${p.wholesale-CONFIG.noBuckleWholesaleDiscount} without buckle)`:""} from ${minOf(p)} pcs</span>`:""}
+  </div>`;
   return el;
 }
 const grid=$("#grid"); PRODUCTS.forEach(p=>grid.append(card(p)));
@@ -233,6 +369,95 @@ cats.forEach((c,i)=>{const b=document.createElement("button");b.textContent=c;b.
   b.onclick=()=>{fl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
     grid.querySelectorAll(".card").forEach(k=>k.hidden=!(c=="All"||k.dataset.cat==c));};
   fl.append(b);});
+
+/* workshop carousel: one photo at a time */
+const track=$("#galTrack");
+track.innerHTML=WORKSHOP.map(([f,cap])=>`<figure><img src="img/${f}.jpg" alt="${cap}" loading="lazy"><figcaption>${cap}</figcaption></figure>`).join("");
+$("#galDots").innerHTML=WORKSHOP.map((_,i)=>`<button aria-label="Photo ${i+1}"></button>`).join("");
+const dots=[...$("#galDots").children];
+const step=()=>track.clientWidth+12;
+const galIndex=()=>Math.round(track.scrollLeft/step());
+const galGo=i=>track.scrollTo({left:Math.max(0,Math.min(WORKSHOP.length-1,i))*step()});
+function galUpdate(){const i=galIndex();$("#galCount").textContent=`${i+1} / ${WORKSHOP.length}`;
+  dots.forEach((d,k)=>d.setAttribute("aria-current",k===i));$("#galPrev").disabled=i===0;$("#galNext").disabled=i===WORKSHOP.length-1;}
+$("#galPrev").onclick=()=>galGo(galIndex()-1);
+$("#galNext").onclick=()=>galGo(galIndex()+1);
+dots.forEach((d,i)=>d.onclick=()=>galGo(i));
+track.addEventListener("scroll",()=>requestAnimationFrame(galUpdate),{passive:true});
+track.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();galGo(galIndex()+1)}if(e.key==="ArrowLeft"){e.preventDefault();galGo(galIndex()-1)}});
+galUpdate();
+
+/* product detail view */
+const pd=$("#pd"), viewer=$("#viewer"), vImg=$("#vImg");
+let cur=null, idx=0, lastScroll=0, openedHere=false;
+function show(i){
+  idx=(i+cur.photos.length)%cur.photos.length;
+  viewer.classList.remove("zoom"); $("#vHint").textContent="Tap to zoom";
+  vImg.src=`img/hd/${cur.photos[idx]}.jpg`; vImg.alt=`${cur.name}, photo ${idx+1}`;
+  $("#vCount").textContent=`${idx+1} / ${cur.photos.length}`;
+  [...$("#vThumbs").children].forEach((b,k)=>b.setAttribute("aria-current",k===idx));
+  const multi=cur.photos.length>1; $("#vPrev").hidden=!multi; $("#vNext").hidden=!multi;
+}
+function openProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id); if(!p) return closeProduct(true);
+  if(!pd.classList.contains("on")) lastScroll=window.scrollY;
+  cur=p;
+  $("#pdCat").textContent=p.cat; $("#pdName").textContent=p.name; $("#pdDesc").textContent=p.desc;
+  $("#pdPrice").innerHTML=p.price==null?`<span class="price" style="font:600 16px var(--sans);color:#8a7765">Price on request</span>`:`<span class="price">$${p.price}<small> USD${p.unit?" "+p.unit:""}</small></span>`;
+  let buy=`<a class="btn" href="${waLink(orderMsg(p,false))}">${p.price==null?"Ask on WhatsApp":"Order on WhatsApp"}</a>`;
+  if(isBelt(p)&&p.price!=null) buy+=`<a class="btn ghost" href="${waLink(orderMsg(p,true))}">Order without buckle &middot; $${p.price-CONFIG.noBuckleDiscount} USD</a>`;
+  buy+=`<a class="btn ghost" href="${waLink(customMsg(p))}">Request a custom piece</a>`;
+  $("#pdBuy").innerHTML=buy;
+  $("#pdWaTop").href=waLink(orderMsg(p,false));
+  $("#pdCustom").innerHTML=(p.natural?`<b>Natural colors:</b> every hide is unique, so tones vary. Ask us for photos of the hides available now.`:`<b>Colors are customizable.</b> Tell us the color you want for the leather${isBelt(p)?", stitching or buckle":" or stitching"}.`)+
+    ` Need a custom size or a made-to-order piece? <a href="${waLink(customMsg(p))}">Message us for a quote</a>.`;
+  const wh=$("#pdWh");
+  if(p.wholesale){wh.hidden=false;wh.innerHTML=`<b>Wholesale:</b> $${p.wholesale} USD each${isBelt(p)?` ($${p.wholesale-CONFIG.noBuckleWholesaleDiscount} without buckle)`:""} from ${minOf(p)} pieces. <a href="${waLink("Hi, I'd like a wholesale quote for: "+p.name)}">Request a quote</a>`;}
+  else wh.hidden=true;
+  const d={...p.details};
+  d.Color=d.Color+(p.natural?"":" (shown). Other colors available");
+  if(isBelt(p)) d.Size="Made to your size; message us";
+  d.Made="By hand in "+CONFIG.city;
+  $("#pdDetails").innerHTML=Object.entries(d).map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+  $("#pdNote").textContent=`Shipping to the U.S. is quoted separately.`+(CONFIG.freeShippingFrom?` Free shipping on orders of $${CONFIG.freeShippingFrom}+.`:"");
+  $("#vThumbs").innerHTML=p.photos.map((f,k)=>`<button aria-label="Photo ${k+1}"><img src="img/${f}.jpg" alt=""></button>`).join("");
+  [...$("#vThumbs").children].forEach((b,k)=>b.onclick=()=>show(k));
+  show(0);
+  pd.classList.add("on"); document.body.classList.add("locked"); pd.scrollTop=0;
+  document.title=`${p.name} | Casa Avelino`;
+  $("#pdBack").focus({preventScroll:true});
+}
+function closeProduct(replace){
+  pd.classList.remove("on"); document.body.classList.remove("locked"); cur=null;
+  document.title="Casa Avelino | Handmade Leather Goods from Mexico";
+  window.scrollTo(0,lastScroll);
+  if(replace) history.replaceState(null,"",location.pathname+location.search);
+}
+function route(){const m=location.hash.match(/^#product\/(.+)$/); if(m) openProduct(decodeURIComponent(m[1])); else if(pd.classList.contains("on")) closeProduct(false);}
+window.addEventListener("hashchange",route);
+document.addEventListener("click",e=>{ if(e.target.closest('a[href^="#product/"]')) openedHere=true; });
+$("#pdBack").onclick=()=>{ if(openedHere){openedHere=false;history.back();} else closeProduct(true); };
+$("#vPrev").onclick=e=>{e.stopPropagation();show(idx-1)};
+$("#vNext").onclick=e=>{e.stopPropagation();show(idx+1)};
+document.addEventListener("keydown",e=>{ if(!cur) return;
+  if(e.key==="Escape") $("#pdBack").click();
+  if(e.key==="ArrowRight") show(idx+1);
+  if(e.key==="ArrowLeft") show(idx-1);
+});
+/* zoom: tap/click to zoom at that point, move to pan, tap again to exit */
+function setOrigin(x,y){const r=viewer.getBoundingClientRect();vImg.style.transformOrigin=`${((x-r.left)/r.width)*100}% ${((y-r.top)/r.height)*100}%`;}
+let moved=false;
+viewer.addEventListener("click",e=>{ if(e.target.closest(".car-btn")||moved){moved=false;return;}
+  if(viewer.classList.contains("zoom")) viewer.classList.remove("zoom"); else {setOrigin(e.clientX,e.clientY);viewer.classList.add("zoom");}
+  $("#vHint").textContent=viewer.classList.contains("zoom")?"Tap to zoom out":"Tap to zoom";
+});
+viewer.addEventListener("mousemove",e=>{ if(viewer.classList.contains("zoom")) setOrigin(e.clientX,e.clientY); });
+viewer.addEventListener("touchmove",e=>{ if(viewer.classList.contains("zoom")){e.preventDefault();moved=true;const t=e.touches[0];setOrigin(t.clientX,t.clientY);} },{passive:false});
+/* swipe between photos when not zoomed */
+let sx=null;
+viewer.addEventListener("touchstart",e=>{ moved=false; if(!viewer.classList.contains("zoom")) sx=e.touches[0].clientX; else sx=null; },{passive:true});
+viewer.addEventListener("touchend",e=>{ if(sx==null) return; const dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>45){moved=true;show(idx+(dx<0?1:-1));} },{passive:true});
+route();
 </script>
 </body>
 </html>
