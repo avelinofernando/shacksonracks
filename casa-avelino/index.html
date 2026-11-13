@@ -169,7 +169,7 @@ footer a{color:var(--oro)}
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="#" aria-label="Casa Avelino, home"><img src="mono.svg" alt="Casa Avelino"></a>
-  <a class="wa" id="waTop" href="#contact">Order on WhatsApp</a>
+  <a class="wa" id="waTop" href="#contact">Order by Email</a>
 </div></header>
 
 <section class="cover">
@@ -226,7 +226,7 @@ footer a{color:var(--oro)}
 <div class="pd" id="pd" role="dialog" aria-modal="true" aria-labelledby="pdName">
   <div class="pd-bar"><div class="wrap">
     <button class="pd-back" id="pdBack">&#8592; All products</button>
-    <a class="wa" id="pdWaTop" href="#">Order on WhatsApp</a>
+    <a class="wa" id="pdWaTop" href="#">Order by Email</a>
   </div></div>
   <div class="pd-body">
     <div>
@@ -256,7 +256,7 @@ footer a{color:var(--oro)}
 <script>
 /* ====== EDIT HERE ====== */
 const CONFIG = {
-  whatsapp: "522221244671",          // digits only, with country code
+  email: "automacreative@gmail.com", // orders and quotes go to this address
   city: "Hueyotlipan, Tlaxcala, Mexico",
   instagram: "",                     // optional
   freeShippingFrom: 399,             // USD. Set 0 to turn off free shipping
@@ -327,7 +327,10 @@ const WORKSHOP = [
 
 const $=s=>document.querySelector(s);
 const cats=["All",...new Set(PRODUCTS.map(p=>p.cat))];
-const waLink=(txt)=>CONFIG.whatsapp?`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(txt)}`:"#contact";
+const subjectOf=txt=>{const m=txt.match(/interested in: (.+?)( \(\$|$)/); if(m) return "Order: "+m[1];
+  if(/wholesale/i.test(txt)) return "Wholesale quote"+(txt.includes(": ")?": "+txt.split(": ").pop():"");
+  if(/custom piece/i.test(txt)) return "Custom piece quote"; return "Inquiry";};
+const waLink=(txt)=>`mailto:${CONFIG.email}?subject=${encodeURIComponent("Casa Avelino - "+subjectOf(txt))}&body=${encodeURIComponent(txt+"\n\nQuantity:\nColor:\nSize (for belts):\nName:\nShipping address (city, state, ZIP):\n")}`;
 const isBelt=p=>p.cat=="Belts";
 const minOf=p=>p.premium?CONFIG.minPremium:(isBelt(p)?CONFIG.minBelts:CONFIG.minOther);
 const orderMsg=(p,noBuckle)=>"Hi, I'm interested in: "+p.name+(noBuckle?" without buckle":"")+(p.price!=null?" ($"+(noBuckle?p.price-CONFIG.noBuckleDiscount:p.price)+" USD)":"");
@@ -335,8 +338,8 @@ const customMsg=p=>"Hi, I'd like a quote for a custom piece"+(p?" based on: "+p.
 const colorTxt=p=>p.natural?"Natural color varies by hide":"Colors are customizable";
 
 $("#waTop").href=waLink("Hi, I saw the Casa Avelino catalog and would like more information.");
-const contact=[CONFIG.city, CONFIG.whatsapp?("WhatsApp +"+CONFIG.whatsapp.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})$/,"$1 $2 $3 $4")):"", CONFIG.instagram].filter(Boolean).join("  ·  ");
-$("#contactLine").innerHTML=CONFIG.whatsapp?`<a href="${waLink("Hi, I'd like more information.")}">${contact}</a>`:contact;
+const contact=[CONFIG.city, CONFIG.email, CONFIG.instagram].filter(Boolean).join("  ·  ");
+$("#contactLine").innerHTML=`${CONFIG.city} &middot; <a href="${waLink("Hi, I'd like more information.")}">${CONFIG.email}</a>`;
 $("#contactoPrint").textContent=contact;
 $("#shipInfo").innerHTML=`Shipping to the U.S. is quoted separately with your order.`+(CONFIG.freeShippingFrom?` <b>Free shipping on orders of $${CONFIG.freeShippingFrom}+.</b>`:"")+
   `<span class="sep"><b>Colors are customizable.</b> Need a custom size or piece? <a href="${waLink(customMsg(null))}">Message us for a quote</a>.</span>`;
@@ -404,7 +407,7 @@ function openProduct(id){
   cur=p;
   $("#pdCat").textContent=p.cat; $("#pdName").textContent=p.name; $("#pdDesc").textContent=p.desc;
   $("#pdPrice").innerHTML=p.price==null?`<span class="price" style="font:600 16px var(--sans);color:#8a7765">Price on request</span>`:`<span class="price">$${p.price}<small> USD${p.unit?" "+p.unit:""}</small></span>`;
-  let buy=`<a class="btn" href="${waLink(orderMsg(p,false))}">${p.price==null?"Ask on WhatsApp":"Order on WhatsApp"}</a>`;
+  let buy=`<a class="btn" href="${waLink(orderMsg(p,false))}">${p.price==null?"Ask by Email":"Order by Email"}</a>`;
   if(isBelt(p)&&p.price!=null) buy+=`<a class="btn ghost" href="${waLink(orderMsg(p,true))}">Order without buckle &middot; $${p.price-CONFIG.noBuckleDiscount} USD</a>`;
   buy+=`<a class="btn ghost" href="${waLink(customMsg(p))}">Request a custom piece</a>`;
   $("#pdBuy").innerHTML=buy;
