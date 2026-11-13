@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" role="img" aria-label="Casa Avelino, cuero y piel hecho a mano">
+  <path d="M20 322 V140 A130 130 0 0 1 280 140 V322 Z" fill="#3b2415"/>
+  <path d="M34 308 V142 A116 116 0 0 1 266 142 V308 Z" fill="none" stroke="#e9d3b0" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round"/>
+  <g fill="#e9d3b0" font-family="'Cormorant Garamond','Playfair Display',Georgia,'Liberation Serif',serif" text-anchor="middle">
+    <text x="150" y="128" font-size="26" letter-spacing="9" fill="#d9a066">CASA</text>
+    <text x="150" y="182" font-size="42" font-weight="700" letter-spacing="1">AVELINO</text>
+    <path d="M70 204 H128 M172 204 H230" stroke="#d9a066" stroke-width="2"/>
+    <path d="M150 196 l8 8 -8 8 -8 -8 z" fill="#d9a066"/>
+    <text x="150" y="244" font-size="17" letter-spacing="5">CUERO Y PIEL</text>
+    <text x="150" y="272" font-size="13" letter-spacing="4" fill="#d9a066">HECHO A MANO</text>
+  </g>
+</svg>

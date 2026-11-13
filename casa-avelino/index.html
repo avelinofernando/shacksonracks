@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Avelino | Cuero y piel hecho a mano</title>
+<meta name="description" content="Cinturones, estuches, trenzados y pieles hechos a mano en cuero. Casa Avelino.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cuero:#3b2415; --cuero2:#5a3820; --caramelo:#b5651d; --oro:#d9a066;
+  --crema:#f6efe3; --papel:#fffaf1; --tinta:#2a1a10; --linea:#e4d6bf;
+  --serif:'Cormorant Garamond','Playfair Display',Georgia,'Liberation Serif',serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--sans);background:var(--crema);color:var(--tinta);line-height:1.5}
+img{display:block;max-width:100%}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header.top{background:var(--cuero);color:var(--crema);position:sticky;top:0;z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+header.top .brand{font-family:var(--serif);font-weight:700;font-size:24px;letter-spacing:3px;text-decoration:none;color:var(--crema)}
+header.top a.wa{background:var(--caramelo);color:#fff;text-decoration:none;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600}
+.hero{background:var(--cuero);color:var(--crema);text-align:center;padding:36px 16px 56px}
+.hero img{width:min(240px,62vw);margin:0 auto 12px}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,6vw,46px);font-weight:500;max-width:620px;margin:0 auto 10px}
+.hero p{max-width:520px;margin:0 auto;color:#e9d3b0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:28px 0 20px}
+.filters button{font:500 14px var(--sans);border:1px solid var(--cuero2);background:transparent;color:var(--cuero);padding:8px 16px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--cuero);color:var(--crema)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;padding-bottom:40px}
+.card{background:var(--papel);border:1px solid var(--linea);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ph{aspect-ratio:4/5;background:var(--cuero2);position:relative}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--oro);font-size:13px;background:repeating-linear-gradient(45deg,#4a2d1a,#4a2d1a 10px,#43291a 10px,#43291a 20px)}
+.ph.empty b{font-family:var(--serif);font-size:30px;letter-spacing:4px;font-weight:700}
+.thumbs{display:flex;gap:6px;padding:8px 8px 0}
+.thumbs button{width:44px;height:44px;padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:none}
+.thumbs button[aria-current="true"]{border-color:var(--caramelo)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.info{padding:12px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.info h3{font-family:var(--serif);font-size:24px;line-height:1.1;color:var(--cuero)}
+.info p{font-size:14px;color:#5e4a3a;flex:1}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.price{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--caramelo)}
+.price small{font:400 12px var(--sans);color:#8a7765}
+.row a{background:var(--cuero);color:var(--crema);text-decoration:none;font-size:13px;font-weight:600;padding:8px 12px;border-radius:999px}
+.about{background:var(--cuero);color:var(--crema);padding:48px 0}
+.about .wrap{display:grid;gap:24px;grid-template-columns:1fr;align-items:center}
+@media(min-width:760px){.about .wrap{grid-template-columns:1fr 1fr}}
+.about img{border-radius:14px;max-height:420px;width:100%;object-fit:cover}
+.about h2{font-family:var(--serif);font-size:36px;font-weight:500;margin-bottom:10px}
+.about p{color:#e9d3b0;margin-bottom:10px}
+footer{background:#2a1a10;color:#c9b79c;text-align:center;padding:28px 16px;font-size:14px}
+footer b{color:var(--crema);font-family:var(--serif);font-size:22px;letter-spacing:3px}
+.cover,.print-only{display:none}
+
+@page{size:Letter;margin:14mm}
+@media print{
+  body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  header.top,.filters,.thumbs,.row a,.hero,.about .wa-btn{display:none!important}
+  .cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240mm;background:var(--cuero);color:var(--crema);text-align:center;page-break-after:always;border-radius:0;padding:20mm}
+  .cover img{width:300px}
+  .cover h2{font-family:var(--serif);font-weight:500;font-size:34px;margin-top:20px}
+  .cover p{color:var(--oro);margin-top:6px;letter-spacing:2px;font-size:13px}
+  .grid{display:flex;flex-wrap:wrap;gap:6mm;padding:0}
+  .card{width:calc(33.333% - 4mm);break-inside:avoid;page-break-inside:avoid}
+  .ph{aspect-ratio:1/1}
+  .info h3{font-size:18px}.info p{font-size:11px}.price{font-size:22px}
+  .card[hidden]{display:flex!important}
+  .about{page-break-before:always;padding:10mm 0;margin-top:8mm}
+  .print-only{display:block}
+  footer{margin-top:8mm}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#">CASA AVELINO</a>
+  <a class="wa" id="waTop" href="#contacto">Pedir por WhatsApp</a>
+</div></header>
+
+<section class="cover">
+  <img src="logo.svg" alt="Casa Avelino">
+  <h2>Catálogo 2026</h2>
+  <p>CUERO Y PIEL &middot; HECHO A MANO</p>
+</section>
+
+<section class="hero">
+  <img src="logo.svg" alt="Casa Avelino, cuero y piel hecho a mano">
+  <h1>Cuero y piel trabajados a mano, uno por uno</h1>
+  <p>Cinturones, estuches, trenzados y pieles hechos en nuestro taller familiar.</p>
+</section>
+
+<main class="wrap">
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="about" id="nosotros">
+  <div class="wrap">
+    <img src="img/taller.jpg" alt="Herramientas del taller de Casa Avelino">
+    <div>
+      <h2>Nuestro taller</h2>
+      <p>Cada pieza se corta, cose y arma a mano en el taller de la familia Avelino, con cuero y piel seleccionados.</p>
+      <p id="historia">Aquí va la historia de Don Roberto: cuántos años lleva trabajando el cuero y cómo aprendió el oficio.</p>
+      <p class="print-only" id="contactoPrint"></p>
+    </div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <b>CASA AVELINO</b>
+  <p id="contactLine"></p>
+  <p style="margin-top:6px;font-size:12px">Precios en dólares (USD). Envío a Estados Unidos por confirmar.</p>
+</footer>
+
+<script>
+/* ====== EDITA AQUÍ ====== */
+const CONFIG = {
+  whatsapp: "",            // solo números con código de país, ej: "5215512345678"
+  ciudad: "",              // ej: "Puebla, México"
+  instagram: "",           // opcional
+};
+// price = precio de venta en USD. photos = archivos dentro de img/ (vacío = "foto próximamente")
+const PRODUCTS = [
+  {name:"Cinturón Napa Caramelo", cat:"Cinturones", price:39, photos:["cinto-napa-1","cinto-napa-2","cinto-napa-3"], desc:"Cuero napa suave color caramelo, costura naranja, remaches y hebilla metálica."},
+  {name:"Cinturón Cuero Rojizo", cat:"Cinturones", price:49, photos:[], desc:"Cuero grueso en tono café rojizo, con hebilla plateada y remaches. El más resistente."},
+  {name:"Cinturón Café Oscuro Suave", cat:"Cinturones", price:34, photos:["cinto-suave-1"], desc:"Cuero suave café oscuro, costura a tono, ojales metálicos y hebilla plateada."},
+  {name:"Cinturón Café con Hebilla", cat:"Cinturones", price:34, photos:[], desc:"Cinturón clásico de cuero café con costura marcada y hebilla plateada."},
+  {name:"Riñonera Doble de Cuero", cat:"Bolsas y estuches", price:169, photos:[], desc:"Dos bolsas de cuero café sobre un cinturón ajustable. Para llevar todo a mano."},
+  {name:"Funda para Celular", cat:"Bolsas y estuches", price:29, photos:[], desc:"Funda de cuero café oscuro con solapa y broche, con pasador para el cinturón."},
+  {name:"Estuche Redondo con Broche", cat:"Bolsas y estuches", price:19, photos:["estuche-negro-1","estuche-negro-2"], desc:"Estuche de cuero con doble costura y broche metálico. Disponible en negro y caramelo."},
+  {name:"Monedero de Gamuza Rosa", cat:"Pieles y gamuza", price:9, photos:[], desc:"Monedero pequeño de gamuza rosa con cierre a tono."},
+  {name:"Monedero de Gamuza Rojo", cat:"Pieles y gamuza", price:7, photos:[], desc:"Monedero pequeño de gamuza roja con cierre a tono."},
+  {name:"Polainas de Gamuza (par)", cat:"Pieles y gamuza", price:69, photos:[], desc:"Par de polainas de gamuza gris para usar sobre la bota."},
+  {name:"Piel de Borrego", cat:"Pieles y gamuza", price:99, unit:"cada una", photos:["piel-1","piel-2","piel-3","piel-4","piel-5"], desc:"Piel de borrego curtida, suave y abrigadora. Cada pieza es única."},
+  {name:"Fusta Trenzada Azul", cat:"Trenzados", price:79, photos:["fusta-azul-1","fusta-azul-2"], desc:"Cuero negro con trenzado azul a mano y flecos."},
+  {name:"Pieza Trenzada Verde y Blanca", cat:"Trenzados", price:179, photos:[], desc:"Trabajo de trenzado en verde y blanco sobre cuero negro, con flecos largos."},
+];
+/* ========================= */
+
+const $=s=>document.querySelector(s);
+const cats=["Todos",...new Set(PRODUCTS.map(p=>p.cat))];
+const waLink=(txt)=>CONFIG.whatsapp?`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(txt)}`:"#contacto";
+$("#waTop").href=waLink("Hola, vi su catálogo de Casa Avelino y quiero más información.");
+const contact=[CONFIG.ciudad, CONFIG.whatsapp?("WhatsApp +"+CONFIG.whatsapp):"WhatsApp: próximamente", CONFIG.instagram].filter(Boolean).join("  ·  ");
+$("#contactLine").textContent=contact; $("#contactoPrint").textContent=contact;
+
+function card(p){
+  const el=document.createElement("article"); el.className="card"; el.dataset.cat=p.cat;
+  const has=p.photos.length>0;
+  el.innerHTML=`<div class="ph ${has?"":"empty"}">${has?`<img src="img/${p.photos[0]}.jpg" alt="${p.name}" loading="lazy">`:`<b>CA</b><span>Foto próximamente</span>`}</div>
+  ${p.photos.length>1?`<div class="thumbs">${p.photos.map((f,i)=>`<button aria-current="${i==0}" data-f="${f}" aria-label="Foto ${i+1}"><img src="img/${f}.jpg" alt=""></button>`).join("")}</div>`:""}
+  <div class="info"><h3>${p.name}</h3><p>${p.desc}</p>
+  <div class="row"><span class="price">$${p.price}<small> USD${p.unit?" "+p.unit:""}</small></span>
+  <a href="${waLink("Hola, me interesa: "+p.name+" ($"+p.price+" USD)")}">Pedir</a></div></div>`;
+  el.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{
+    el.querySelector(".ph img").src=`img/${b.dataset.f}.jpg`;
+    el.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-current",x===b));
+  });
+  return el;
+}
+const grid=$("#grid"); PRODUCTS.forEach(p=>grid.append(card(p)));
+const fl=$("#filters");
+cats.forEach((c,i)=>{const b=document.createElement("button");b.textContent=c;b.setAttribute("aria-pressed",i==0);
+  b.onclick=()=>{fl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    grid.querySelectorAll(".card").forEach(k=>k.hidden=!(c=="Todos"||k.dataset.cat==c));};
+  fl.append(b);});
+</script>
+</body>
+</html>
